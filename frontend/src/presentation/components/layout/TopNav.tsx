@@ -17,7 +17,7 @@ import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 
 const links = [
   { label: 'Visão Geral', to: '/app/overview' },
-  { label: 'Ativos', to: '/app/assets' },
+  { label: 'Equipamentos', to: '/app/equipamentos' },
   { label: 'Ordens de Serviço', to: '/app/work-orders' },
   { label: 'Planos', to: '/app/plans' },
   { label: 'Métricas', to: '/app/metrics' },
