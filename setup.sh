@@ -3,70 +3,65 @@
 echo "🛠️  Iniciando configuração do ambiente TrakNor..."
 
 ################################################################################
-# 1. Verifica se pnpm está instalado
+# 1. pnpm
 ################################################################################
 if ! command -v pnpm &> /dev/null; then
   echo "🚫 pnpm não encontrado. Instalando..."
   corepack enable
   corepack prepare pnpm@latest --activate
 fi
-
 echo "✅ pnpm disponível: $(pnpm -v)"
 
 ################################################################################
-# 2. Instala TODAS as dependências do monorepo
+# 2. Instala todas as dependências do monorepo
 ################################################################################
-echo "📦 Instalando dependências..."
+echo "📦 Instalando dependências (root/workspace)..."
 pnpm install
 
 ################################################################################
-# 3. Garante que @tanstack/react-query esteja instalado (root/workspace)
+# 3. Acessa o diretório frontend (sub-package)
 ################################################################################
-if ! pnpm -w list @tanstack/react-query &> /dev/null; then
-  echo "➕ Instalando dependência ausente @tanstack/react-query..."
-  pnpm add -w @tanstack/react-query
-fi
+cd frontend || { echo "❌ Diretório 'frontend' não encontrado"; exit 1; }
 
 ################################################################################
-# 4. Acessa o diretório do frontend
-################################################################################
-cd frontend || exit 1
-
-################################################################################
-# 5. Garante que Vite esteja instalado
+# 4. Garante Vite
 ################################################################################
 if ! pnpm list vite &> /dev/null; then
-  echo "📦 Vite não encontrado, instalando como dependência de desenvolvimento..."
+  echo "➕ Instalando Vite..."
   pnpm add -D vite
 fi
 
 ################################################################################
-# 6. Garante que o script 'dev' exista no package.json
+# 5. Garante @tanstack/react-query (dependência reportada como ausente)
 ################################################################################
-if ! grep -q '"dev"' package.json; then
-  echo "🚀 Adicionando script de desenvolvimento ao package.json..."
-  npx json -I -f package.json -e 'this.scripts.dev="vite"'
+if ! pnpm list @tanstack/react-query &> /dev/null; then
+  echo "➕ Instalando dependência ausente @tanstack/react-query..."
+  pnpm add @tanstack/react-query
 fi
 
 ################################################################################
-# 7. Garante presença de tsconfig.json e .eslintrc.cjs básicos
+# 6. Cria script dev se não existir
 ################################################################################
-echo "🔍 Verificando tsconfig e eslint..."
+if ! grep -q '"dev"' package.json; then
+  echo "🚀 Adicionando script \"dev\" ao package.json..."
+  npx json -I -f package.json -e 'this.scripts ??={}; this.scripts.dev="vite"'
+fi
+
+################################################################################
+# 7. tsconfig e ESLint básicos (para não travar build)
+################################################################################
+echo "🔍 Conferindo tsconfig / eslint..."
 if [ ! -f "tsconfig.json" ]; then
-  echo "⚠️  tsconfig.json não encontrado, criando arquivo base..."
+  echo "⚠️  tsconfig.json não encontrado – criando configuração mínima..."
   npx tsc --init --rootDir src --module ESNext --target ESNext --jsx react-jsx
 fi
 
 if [ ! -f ".eslintrc.cjs" ]; then
-  echo "⚠️  .eslintrc.cjs não encontrado, criando base..."
+  echo "⚠️  .eslintrc.cjs não encontrado – gerando arquivo base..."
   cat <<'EOF' > .eslintrc.cjs
 module.exports = {
   parser: "@typescript-eslint/parser",
-  parserOptions: {
-    project: "./tsconfig.json",
-    tsconfigRootDir: __dirname,
-    sourceType: "module",
-  },
+  parserOptions: { project: "./tsconfig.json", tsconfigRootDir: __dirname },
   extends: [
     "airbnb-typescript",
     "plugin:react/recommended",
@@ -75,20 +70,14 @@ module.exports = {
     "prettier"
   ],
   plugins: ["@typescript-eslint", "react", "jsx-a11y", "react-hooks"],
-  rules: {
-    "react/react-in-jsx-scope": "off"
-  },
-  settings: {
-    react: {
-      version: "detect"
-    }
-  }
+  rules: { "react/react-in-jsx-scope": "off" },
+  settings: { react: { version: "detect" } }
 };
 EOF
 fi
 
 ################################################################################
-# 8. Inicia o servidor de desenvolvimento
+# 8. Sobe o servidor de desenvolvimento
 ################################################################################
-echo "🚀 Iniciando o servidor de desenvolvimento com Vite..."
+echo "🚀 Iniciando Vite (pnpm run dev)..."
 pnpm run dev
