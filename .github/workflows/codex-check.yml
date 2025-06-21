@@ -1,0 +1,26 @@
+name: Codex Connection Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  codex-test:
+    runs-on: ubuntu-latest
+    env:
+      CODEX_API_TOKEN: ${{ secrets.CODEX_API_TOKEN }}
+      CODEX_GH_TOKEN: ${{ secrets.CODEX_GH_TOKEN }}
+      CODEX_PROJECT: climatrak
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Instalar Node e pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Instalar dependências
+        run: pnpm install
+
+      - name: Listar features da sprint atual (Codex CLI)
+        run: npx codex feature ls --sprint current
