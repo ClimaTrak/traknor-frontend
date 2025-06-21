@@ -4,7 +4,7 @@ This repository contains the React front-end for ClimaTrak.
 
 ## Development
 
-Install dependencies and start the dev server:
+Install dependencies and start the dev server from the repository root:
 
 ```bash
 pnpm install
