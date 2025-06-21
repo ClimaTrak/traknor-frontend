@@ -6,9 +6,14 @@ module.exports = {
   },
   extends: [
     'airbnb-typescript',
+    'plugin:react/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
     'plugin:react-hooks/recommended',
     'prettier',
   ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.json',
   },
