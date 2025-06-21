@@ -4,7 +4,11 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['airbnb-typescript', 'airbnb/hooks', 'prettier'],
+  extends: [
+    'airbnb-typescript',
+    'plugin:react-hooks/recommended',
+    'prettier',
+  ],
   parserOptions: {
     project: './tsconfig.json',
   },
