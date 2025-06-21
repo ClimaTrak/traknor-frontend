@@ -1,22 +1,20 @@
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
-  },
-  extends: [
-    'airbnb-typescript',
-    'plugin:react/recommended',
-    'plugin:jsx-a11y/recommended',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
-    'plugin:react-hooks/recommended',
-    'prettier',
-  ],
-  parser: '@typescript-eslint/parser',
+  parser: "@typescript-eslint/parser",
   parserOptions: {
-    project: './tsconfig.json',
+    project: "tsconfig.eslint.json"   // ⚠️ aponta p/ o arquivo acima
   },
-  rules: {},
+  plugins: ["@typescript-eslint", "react", "react-hooks", "import", "jsx-a11y"],
+  extends: [
+    "plugin:@typescript-eslint/recommended-type-checked", // preset v6
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:import/typescript",
+    "plugin:jsx-a11y/recommended",
+    "airbnb-typescript/base",
+    "prettier"
+  ],
+  settings: { react: { version: "18.2" } },
+  ignorePatterns: ["cypress/**", "tests/**", "**/*.stories.tsx"]
 };
+
 
