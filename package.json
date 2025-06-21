@@ -1,0 +1,5 @@
+{
+  "name": "traknor-root",
+  "private": true,
+  "workspaces": ["frontend"]
+}
