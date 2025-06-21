@@ -9,6 +9,7 @@ export interface LoginResponse {
     id: number;
     email: string;
     name: string;
+    role: 'ADMIN' | 'TECH' | 'CLIENT';
   };
 }
 
@@ -18,7 +19,7 @@ const AuthService = {
     if (password === 'password') {
       return {
         token: 'mock-token',
-        user: { id: 1, email, name: 'Usuário' },
+        user: { id: 1, email, name: 'Usuário', role: 'ADMIN' },
       };
     }
     throw new Error('Credenciais inválidas');
