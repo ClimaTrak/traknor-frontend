@@ -1,5 +1,9 @@
 {
   "name": "traknor-root",
   "private": true,
-  "workspaces": ["frontend"]
+  "workspaces": ["frontend"],
+  "scripts": {
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint"
+  }
 }
