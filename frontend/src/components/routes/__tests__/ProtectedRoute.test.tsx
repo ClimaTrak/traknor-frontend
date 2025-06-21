@@ -1,7 +1,7 @@
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import ProtectedRoute from '../ProtectedRoute';
-import { useAuthStore } from '../../../application/stores/authStore';
+import { useAuthStore } from '../../../application/stores/useAuthStore';
 
 describe('ProtectedRoute', () => {
   it('redirects to login when unauthenticated', () => {

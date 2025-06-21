@@ -1,4 +1,4 @@
-import { useAuthStore } from '../stores/authStore';
+import { useAuthStore } from '../stores/useAuthStore';
 
 const useIsAuthenticated = () => !!useAuthStore((state) => state.token);
 

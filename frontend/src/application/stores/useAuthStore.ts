@@ -1,9 +1,9 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { AuthState } from '../../domain/auth';
+import { AuthState, User } from '../../domain/auth';
 
 interface AuthActions {
-  login: (token: string) => void;
+  login: (token: string, user: User) => void;
   logout: () => void;
 }
 
@@ -13,8 +13,9 @@ export const useAuthStore = create<AuthStore>()(
   persist(
     (set) => ({
       token: null,
-      login: (token: string) => set({ token }),
-      logout: () => set({ token: null }),
+      user: null,
+      login: (token: string, user: User) => set({ token, user }),
+      logout: () => set({ token: null, user: null }),
     }),
     {
       name: 'auth',

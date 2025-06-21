@@ -6,7 +6,7 @@ import WorkOrders from '../presentation/pages/WorkOrders';
 import Plans from '../presentation/pages/Plans';
 import Metrics from '../presentation/pages/Metrics';
 import Reports from '../presentation/pages/Reports';
-import Login from '../presentation/pages/Login';
+import LoginPage from '../presentation/pages/LoginPage';
 import AuthGuard from '../components/routes/AuthGuard';
 import useIsAuthenticated from '../application/hooks/useIsAuthenticated';
 
@@ -14,7 +14,7 @@ const Router = () => {
   const isAuthenticated = useIsAuthenticated();
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<LoginPage />} />
       <Route
         path="/app/*"
         element={
