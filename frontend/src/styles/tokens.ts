@@ -15,6 +15,7 @@ export const typography = {
   heading32: '32px',
   heading24: '24px',
   body16: '16px',
+  caption14: '14px',
   caption12: '12px',
 };
 
