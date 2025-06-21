@@ -7,7 +7,10 @@
     "build": "tsc && vite build",
     "lint": "eslint --ext .ts,.tsx src",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,css,md}\""
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
+    "test": "jest",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@mantine/core": "^7.0.0",
@@ -32,7 +35,12 @@
     "prettier": "^3.1.0",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.3.3",
-    "vite": "^4.5.0"
+    "vite": "^4.5.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/jest-dom": "^6.0.0",
+    "storybook": "^7.6.0",
+    "cypress": "^13.6.0"
   }
 }
-
