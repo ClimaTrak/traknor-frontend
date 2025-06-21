@@ -1,57 +1,73 @@
-#!/usr/bin/env bash
-set -e  # para o script se qualquer comando falhar
+#!/bin/bash
 
-echo "==> Instalando dependências do workspace root…"
-pnpm install --frozen-lockfile
+echo "🛠️  Iniciando configuração do ambiente TrakNor..."
 
-echo "==> Entrando no pacote frontend…"
-cd frontend
+# 1. Verifica se pnpm está instalado
+if ! command -v pnpm &> /dev/null; then
+  echo "🚫 pnpm não encontrado. Instalando..."
+  corepack enable
+  corepack prepare pnpm@latest --activate
+fi
 
-echo "==> Adicionando Vite e plugins…"
-pnpm add -D vite @vitejs/plugin-react vite-tsconfig-paths
+echo "✅ pnpm disponível: $(pnpm -v)"
 
-echo "==> Gerando vite.config.ts…"
-cat > vite.config.ts <<'EOF'
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tsconfigPaths from 'vite-tsconfig-paths'
+# 2. Instala todas as dependências do projeto
+echo "📦 Instalando dependências..."
+pnpm install
 
-export default defineConfig({
-  plugins: [react(), tsconfigPaths()],
-  server: { port: 5173 },
-})
-EOF
+# 3. Acessa o frontend
+cd frontend || exit 1
 
-echo "==> Garantindo scripts no package.json…"
-npx json -I -f package.json -e '
-  this.scripts ||= {};
-  this.scripts.dev     = "vite";
-  this.scripts.build   = "vite build";
-  this.scripts.preview = "vite preview";
-  this.scripts.lint    = "eslint \"src/**/*.{ts,tsx}\" --fix";
-'
+# 4. Garante que Vite esteja instalado
+if ! pnpm list vite &> /dev/null; then
+  echo "📦 Vite não encontrado, instalando como dependência de desenvolvimento..."
+  pnpm add -D vite
+fi
 
-echo "==> Configurando ESLint + Prettier (se ainda não houver)…"
-pnpm add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin \
-  eslint-config-prettier eslint-plugin-react eslint-plugin-react-hooks \
-  eslint-plugin-import eslint-import-resolver-typescript
+# 5. Cria o script dev no package.json se não existir
+if ! grep -q '"dev"' package.json; then
+  echo "🚀 Adicionando script de desenvolvimento ao package.json..."
+  npx json -I -f package.json -e 'this.scripts.dev="vite"'
+fi
 
-cat > .eslintrc.cjs <<'EOF'
+# 6. Verifica se há erros no tsconfig ou eslint
+echo "🔍 Verificando tsconfig e eslint..."
+if [ ! -f "tsconfig.json" ]; then
+  echo "⚠️ tsconfig.json não encontrado, criando arquivo base..."
+  npx tsc --init --rootDir src --module ESNext --target ESNext --jsx react-jsx
+fi
+
+if [ ! -f ".eslintrc.cjs" ]; then
+  echo "⚠️ .eslintrc.cjs não encontrado, criando base..."
+  cat <<EOF > .eslintrc.cjs
 module.exports = {
-  root: true,
-  parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'import'],
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    project: "./tsconfig.json",
+    tsconfigRootDir: __dirname,
+    sourceType: "module",
+  },
   extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
-    'plugin:import/typescript',
-    'prettier'
+    "airbnb-typescript",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jsx-a11y/recommended",
+    "prettier"
   ],
-  settings: { react: { version: 'detect' } }
-}
+  plugins: ["@typescript-eslint", "react", "jsx-a11y", "react-hooks"],
+  rules: {
+    "react/react-in-jsx-scope": "off"
+  },
+  settings: {
+    react: {
+      version: "detect"
+    }
+  }
+};
 EOF
+fi
 
-echo "✅  Setup concluído! Agora você pode rodar:  pnpm run dev"
+# 7. Executa a aplicação
+echo "🚀 Iniciando o servidor de desenvolvimento com Vite..."
+pnpm run dev
+
