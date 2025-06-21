@@ -7,4 +7,8 @@ const config: Config = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
 };
 
-export default config;
+export default {
+  preset: 'ts-jest',
+  testEnvironment: 'jsdom'
+};
+
