@@ -16,5 +16,10 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["frontend/src", "frontend/tests", "frontend/setupTests.ts", "frontend/cypress"]
+  "include": [
+    "frontend/src",
+    "frontend/tests",
+    "frontend/setupTests.ts",
+    "frontend/cypress"
+  ]
 }

@@ -47,4 +47,3 @@ export const Playground: Story = {
     </ChartCard>
   ),
 };
-

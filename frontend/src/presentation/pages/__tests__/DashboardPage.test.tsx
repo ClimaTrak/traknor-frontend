@@ -20,7 +20,7 @@ test('dashboard renders KPIs and charts', async () => {
       <ClimaTrakThemeProvider>
         <DashboardPage />
       </ClimaTrakThemeProvider>
-    </MemoryRouter>
+    </MemoryRouter>,
   );
 
   expect(await findByText('OS Abertas')).toBeInTheDocument();

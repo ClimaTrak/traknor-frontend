@@ -34,7 +34,9 @@ const Router = () => {
       </Route>
       <Route
         path="*"
-        element={<Navigate to={isAuthenticated ? '/app/overview' : '/login'} replace />}
+        element={
+          <Navigate to={isAuthenticated ? '/app/overview' : '/login'} replace />
+        }
       />
     </Routes>
   );

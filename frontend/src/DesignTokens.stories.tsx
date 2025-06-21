@@ -51,7 +51,12 @@ export const Spacing = () => {
       {Object.entries(spacing).map(([token, space]) => (
         <div
           key={token}
-          style={{ width: space, height: space, background: '#eee', position: 'relative' }}
+          style={{
+            width: space,
+            height: space,
+            background: '#eee',
+            position: 'relative',
+          }}
         >
           <span style={{ position: 'absolute', top: '100%' }}>{token}</span>
         </div>
@@ -59,4 +64,3 @@ export const Spacing = () => {
     </div>
   );
 };
-

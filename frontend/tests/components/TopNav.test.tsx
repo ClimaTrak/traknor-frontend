@@ -6,7 +6,7 @@ it('renders main links and avatar', () => {
   const { getByText } = render(
     <MemoryRouter>
       <TopNav />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
   expect(getByText('Visão Geral')).toBeInTheDocument();
   expect(getByText('U')).toBeInTheDocument();

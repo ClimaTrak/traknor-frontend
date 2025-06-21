@@ -9,7 +9,7 @@ test('login form renders correctly', () => {
       <ClimaTrakThemeProvider>
         <LoginPage />
       </ClimaTrakThemeProvider>
-    </MemoryRouter>
+    </MemoryRouter>,
   );
   expect(getByLabelText('E-mail')).toBeInTheDocument();
   expect(container).toMatchSnapshot();

@@ -23,7 +23,6 @@ The application will be available at http://localhost:5173 showing **Hello Clima
 
 For instructions on setting up the project in Visual Studio Code, see [docs/setup-vscode.md](docs/setup-vscode.md).
 
-
 Run the linter and formatter:
 
 ```bash
@@ -31,4 +30,3 @@ pnpm lint
 pnpm format
 pnpm format:check
 ```
-

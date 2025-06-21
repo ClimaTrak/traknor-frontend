@@ -1,5 +1,5 @@
 # .codexrc.yml  (adicionar ao .gitignore se preferir mantê-lo fora do git)
 project: climatrak
 api_url: https://api.codex.dev
-default_branch: main           # o repositório usa main por padrão :contentReference[oaicite:1]{index=1}
+default_branch: main # o repositório usa main por padrão :contentReference[oaicite:1]{index=1}
 editor: code

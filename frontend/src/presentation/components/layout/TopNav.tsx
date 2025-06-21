@@ -39,7 +39,8 @@ const TopNav = () => {
       color="gray"
       onClick={() => isMobile && close()}
       className={({ isActive }) =>
-        `${isActive ? 'text-[#00968f]' : 'text-gray-200'} hover:opacity-80`}
+        `${isActive ? 'text-[#00968f]' : 'text-gray-200'} hover:opacity-80`
+      }
     >
       {link.label}
     </Button>
@@ -65,8 +66,12 @@ const TopNav = () => {
               </Button>
             </Menu.Target>
             <Menu.Dropdown>
-              <Menu.Item onClick={() => setModule('TrakNor')}>TrakNor</Menu.Item>
-              <Menu.Item onClick={() => setModule('TrakSense')}>TrakSense</Menu.Item>
+              <Menu.Item onClick={() => setModule('TrakNor')}>
+                TrakNor
+              </Menu.Item>
+              <Menu.Item onClick={() => setModule('TrakSense')}>
+                TrakSense
+              </Menu.Item>
             </Menu.Dropdown>
           </Menu>
         </Group>

@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react';
 import { SimpleGrid, Skeleton, Stack, Title } from '@mantine/core';
 import StatCard from '../components/StatCard';
 import ChartCard from '../components/ChartCard';
-import DashboardService, { DashboardStats } from '../../services/DashboardService';
+import DashboardService, {
+  DashboardStats,
+} from '../../services/DashboardService';
 
 const DashboardPage = () => {
   const [stats, setStats] = useState<DashboardStats | null>(null);

@@ -7,7 +7,7 @@ Este documento descreve os passos para clonar e executar o front-end do projeto 
 - **Node.js** 16 ou superior
 - **pnpm** (gerenciador de pacotes)
 - **Git** para clonar o repositório
-- (Opcional) Extensão *ESLint* no VS Code para feedback de lint em tempo real
+- (Opcional) Extensão _ESLint_ no VS Code para feedback de lint em tempo real
 
 ## 2. Clonar o repositório
 
@@ -57,11 +57,10 @@ Este repositório segue a abordagem **Clean Architecture**, com as pastas princi
 
 - `domain/`
 - `application/`
-- `infrastructure/` *(planejada para serviços HTTP e persistência)*
+- `infrastructure/` _(planejada para serviços HTTP e persistência)_
 - `presentation/`
 
 ## 7. Dicas adicionais
 
 - Recomenda-se configurar o arquivo `.env` caso a aplicação precise de variáveis de ambiente.
 - Antes de enviar um pull request, execute `pnpm lint` e `pnpm test` (ou `pytest` para projetos em Python). Caso altere modelos em projetos do backend, crie a migração correspondente.
-

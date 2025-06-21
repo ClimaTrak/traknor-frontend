@@ -34,12 +34,13 @@ export const Playground: Story = {
       label={label}
       value={value}
       statusColor={statusColor}
-      icon={icon ? (
-        <span role="img" aria-label="icon">
-          {icon}
-        </span>
-      ) : undefined}
+      icon={
+        icon ? (
+          <span role="img" aria-label="icon">
+            {icon}
+          </span>
+        ) : undefined
+      }
     />
   ),
 };
-

@@ -7,12 +7,19 @@ describe('ProtectedRoute', () => {
   it('redirects to login when unauthenticated', () => {
     useAuthStore.setState({ token: null });
     const { container } = render(
-      <MemoryRouter initialEntries={["/app"]}>
+      <MemoryRouter initialEntries={['/app']}>
         <Routes>
           <Route path="/login" element={<div>Login</div>} />
-          <Route path="/app" element={<ProtectedRoute><div>App</div></ProtectedRoute>} />
+          <Route
+            path="/app"
+            element={
+              <ProtectedRoute>
+                <div>App</div>
+              </ProtectedRoute>
+            }
+          />
         </Routes>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(container.innerHTML).toContain('Login');
   });
@@ -20,12 +27,19 @@ describe('ProtectedRoute', () => {
   it('renders children when authenticated', () => {
     useAuthStore.setState({ token: 'token' });
     const { getByText } = render(
-      <MemoryRouter initialEntries={["/app"]}>
+      <MemoryRouter initialEntries={['/app']}>
         <Routes>
           <Route path="/login" element={<div>Login</div>} />
-          <Route path="/app" element={<ProtectedRoute><div>App</div></ProtectedRoute>} />
+          <Route
+            path="/app"
+            element={
+              <ProtectedRoute>
+                <div>App</div>
+              </ProtectedRoute>
+            }
+          />
         </Routes>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(getByText('App')).toBeInTheDocument();
   });

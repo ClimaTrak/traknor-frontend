@@ -8,10 +8,7 @@ const config: Config = {
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },
+  roots: ['<rootDir>/src'],
 };
 
-export default {
-  preset: 'ts-jest',
-  testEnvironment: 'jsdom'
-};
-
+export default config;
