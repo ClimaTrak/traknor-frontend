@@ -6,6 +6,7 @@ import WorkOrders from '../presentation/pages/WorkOrders';
 import Plans from '../presentation/pages/Plans';
 import Metrics from '../presentation/pages/Metrics';
 import Reports from '../presentation/pages/Reports';
+import DashboardPage from '../presentation/pages/DashboardPage';
 import LoginPage from '../presentation/pages/LoginPage';
 import AuthGuard from '../components/routes/AuthGuard';
 import useIsAuthenticated from '../application/hooks/useIsAuthenticated';
@@ -23,6 +24,7 @@ const Router = () => {
           </AuthGuard>
         }
       >
+        <Route index element={<DashboardPage />} />
         <Route path="overview" element={<Overview />} />
         <Route path="assets" element={<Assets />} />
         <Route path="work-orders" element={<WorkOrders />} />
