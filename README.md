@@ -13,6 +13,8 @@ pnpm dev
 
 The application will be available at http://localhost:5173 showing **Hello ClimaTrak**.
 
+For a detailed step-by-step guide on running the project locally, see [docs/rodando-localmente.md](docs/rodando-localmente.md).
+
 ## Como rodar
 
 1. Execute `pnpm install` na raiz do repositório para instalar as dependências.
