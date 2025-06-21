@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["DOM", "ESNext"],
+    "jsx": "react-jsx",
+    "moduleResolution": "Node",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./frontend/src",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["frontend/src", "frontend/tests", "frontend/setupTests.ts", "frontend/cypress"]
+}
