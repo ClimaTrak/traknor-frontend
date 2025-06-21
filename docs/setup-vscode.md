@@ -24,6 +24,12 @@ Instale todas as dependências utilizando o pnpm:
 pnpm install
 ```
 
+Para garantir que as bibliotecas permaneçam atualizadas, rode periodicamente:
+
+```bash
+pnpm update
+```
+
 Se estiver contribuindo com o projeto, execute também:
 
 ```bash

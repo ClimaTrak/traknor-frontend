@@ -1,7 +1,8 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import AppLayout from '../presentation/components/layout/AppLayout';
 import Overview from '../presentation/pages/Overview';
-import Assets from '../presentation/pages/Assets';
+import EquipamentosPage from '../modules/assets/presentation/EquipamentosPage';
+import UsuariosPage from '../modules/users/presentation/UsuariosPage';
 import WorkOrders from '../presentation/pages/WorkOrders';
 import Plans from '../presentation/pages/Plans';
 import Metrics from '../presentation/pages/Metrics';
@@ -26,7 +27,8 @@ const Router = () => {
       >
         <Route index element={<DashboardPage />} />
         <Route path="overview" element={<Overview />} />
-        <Route path="assets" element={<Assets />} />
+        <Route path="equipamentos" element={<EquipamentosPage />} />
+        <Route path="usuarios" element={<UsuariosPage />} />
         <Route path="work-orders" element={<WorkOrders />} />
         <Route path="plans" element={<Plans />} />
         <Route path="metrics" element={<Metrics />} />
