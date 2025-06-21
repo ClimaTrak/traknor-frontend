@@ -4,6 +4,7 @@ const config: StorybookConfig = {
   stories: ['../src/**/*.stories.tsx'],
   addons: ['@storybook/addon-essentials'],
   framework: '@storybook/react-vite',
+  docs: { autodocs: true },
 };
 
 export default config;

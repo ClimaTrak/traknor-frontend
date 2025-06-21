@@ -1,42 +1,45 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import StatCard from './StatCard';
-import { Button } from '@mantine/core';
 
 const meta: Meta<typeof StatCard> = {
   title: 'Components/StatCard',
   component: StatCard,
+  argTypes: {
+    label: { control: 'text' },
+    value: { control: 'number' },
+    statusColor: { control: 'color' },
+    icon: { control: 'text' },
+  },
 };
 
 export default meta;
 
-type Story = StoryObj<typeof StatCard>;
+interface Args {
+  label: string;
+  value: number;
+  statusColor: string;
+  icon?: string;
+}
+type Story = StoryObj<Args>;
 
-export const Default: Story = {
-  render: () => (
+export const Playground: Story = {
+  args: {
+    label: 'OS Abertas',
+    value: 8,
+    statusColor: 'green',
+    icon: '📈',
+  },
+  render: ({ label, value, statusColor, icon }) => (
     <StatCard
-      label="OS Abertas"
-      value={8}
-      statusColor="green"
-      icon={
-        <span role="img" aria-label="up">
-          📈
+      label={label}
+      value={value}
+      statusColor={statusColor}
+      icon={icon ? (
+        <span role="img" aria-label="icon">
+          {icon}
         </span>
-      }
+      ) : undefined}
     />
   ),
 };
 
-export const Warning: Story = {
-  render: () => (
-    <StatCard
-      label="OS Atrasadas"
-      value={2}
-      statusColor="orange"
-      icon={
-        <span role="img" aria-label="warning">
-          ⚠️
-        </span>
-      }
-    />
-  ),
-};
