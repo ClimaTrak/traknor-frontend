@@ -14,7 +14,8 @@
     "baseUrl": "./frontend/src",
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "types": ["jest"]
   },
   "include": [
     "frontend/src",

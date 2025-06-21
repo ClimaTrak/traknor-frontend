@@ -1,4 +1,12 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src", "tests", "cypress", "setupTests.ts"]
+  "compilerOptions": {
+    "types": ["jest"]
+  },
+  "include": [
+    "src",
+    "tests",
+    "setupTests.ts",
+    "cypress"
+  ]
 }
