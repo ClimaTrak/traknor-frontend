@@ -125,3 +125,7 @@ Para verificar permissões em componentes:
 ```tsx
 {isAuthorized(['admin']) && <ActionIcon aria-label="Excluir" />}
 ```
+
+## Performance
+
+Benchmarks rápidos com `pnpm perf` mostram redução de re-renderizações e bundle menor após a adoção de `React.lazy` e memoização.
