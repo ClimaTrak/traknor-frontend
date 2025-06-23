@@ -3,7 +3,7 @@ import AppLayout from '../presentation/components/layout/AppLayout';
 import Overview from '../presentation/pages/Overview';
 import EquipmentList from '../pages/Equipment/EquipmentList';
 import UsuariosPage from '../modules/users/presentation/UsuariosPage';
-import WorkOrders from '../presentation/pages/WorkOrders';
+import WorkOrderInbox from '../pages/WorkOrders/WorkOrderInbox';
 import Plans from '../presentation/pages/Plans';
 import Metrics from '../presentation/pages/Metrics';
 import Reports from '../presentation/pages/Reports';
@@ -29,7 +29,7 @@ const Router = () => {
         <Route path="overview" element={<Overview />} />
         <Route path="equipamentos" element={<EquipmentList />} />
         <Route path="usuarios" element={<UsuariosPage />} />
-        <Route path="work-orders" element={<WorkOrders />} />
+        <Route path="work-orders/*" element={<WorkOrderInbox />} />
         <Route path="plans" element={<Plans />} />
         <Route path="metrics" element={<Metrics />} />
         <Route path="reports" element={<Reports />} />

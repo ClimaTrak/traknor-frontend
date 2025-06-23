@@ -40,11 +40,11 @@ Todas as chamadas HTTP utilizam a instância `api` configurada em `src/infrastru
 Exemplo de login e chamada autenticada:
 
 ```ts
-import { login } from '@/infrastructure/api/auth';
-import { api } from '@/infrastructure/api/axios';
+import { login } from "@/infrastructure/api/auth";
+import { api } from "@/infrastructure/api/axios";
 
-await login({ username: 'alice', password: '123' });
-const dados = await api.get('/api/dashboard/');
+await login({ username: "alice", password: "123" });
+const dados = await api.get("/api/dashboard/");
 ```
 
 Tokens são salvos em `localStorage` e renovados automaticamente.
@@ -55,11 +55,11 @@ As telas **Login** (`/login`) e **Recuperar Senha** (`/password-reset`) utilizam
 Após autenticar, a aplicação grava `access`, `refresh` e `role` em `localStorage`.
 O redirecionamento pós-login considera o `role` do usuário:
 
-| Role       | Rota inicial        |
-|------------|--------------------|
-| `ADMIN`    | `/dashboard`       |
-| `TECH`     | `/work-orders`     |
-| `CLIENT`   | `/work-orders/my`  |
+| Role     | Rota inicial      |
+| -------- | ----------------- |
+| `ADMIN`  | `/dashboard`      |
+| `TECH`   | `/work-orders`    |
+| `CLIENT` | `/work-orders/my` |
 
 Rotas privadas usam `<PrivateRoute>` para exigir token válido.
 
@@ -69,6 +69,7 @@ Rotas privadas usam `<PrivateRoute>` para exigir token válido.
 - `pnpm api:check` → gera e falha se houver diferenças (usado no CI e pre-commit)
 
 ## Layout & Tema
+
 - Cores primárias: #002d2b | #00968f | #00fff4
 - Componente AppShell em `src/components/Layout`
 
@@ -77,3 +78,7 @@ Rotas privadas usam `<PrivateRoute>` para exigir token válido.
 A tela `/app/equipamentos` permite gerenciar a lista de equipamentos.
 Ela utiliza tabela paginada, formulário em modal e importação de CSV.
 Os dados são obtidos via hooks gerados em `src/api/generated/hooks/equipment.ts`.
+
+## Ordens de Serviço
+
+A partir da rota `/app/work-orders` é possível visualizar uma caixa de entrada de OS e o detalhe da seleção ao lado. As ações de mudança de status são carregadas dinamicamente e requerem permissão conforme o papel do usuário.
