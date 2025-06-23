@@ -71,3 +71,9 @@ Rotas privadas usam `<PrivateRoute>` para exigir token válido.
 ## Layout & Tema
 - Cores primárias: #002d2b | #00968f | #00fff4
 - Componente AppShell em `src/components/Layout`
+
+## Equipamentos
+
+A tela `/app/equipamentos` permite gerenciar a lista de equipamentos.
+Ela utiliza tabela paginada, formulário em modal e importação de CSV.
+Os dados são obtidos via hooks gerados em `src/api/generated/hooks/equipment.ts`.
