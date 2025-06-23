@@ -62,3 +62,8 @@ O redirecionamento pós-login considera o `role` do usuário:
 | `CLIENT`   | `/work-orders/my`  |
 
 Rotas privadas usam `<PrivateRoute>` para exigir token válido.
+
+### Sincronizar tipos da API
+
+- `pnpm api:gen` → gera/atualiza tipos e hooks
+- `pnpm api:check` → gera e falha se houver diferenças (usado no CI e pre-commit)
