@@ -6,7 +6,8 @@
   ],
   "scripts": {
     "lint": "pnpm --filter frontend run lint",
-    "test": "pnpm --filter frontend run test",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
     "api:gen": "openapi-typescript $VITE_API_URL/schema/ -o frontend/src/api/generated/schemas.ts && openapi-typescript-codegen --client axios -o frontend/src/api/generated --useOptions --useUnionTypes $VITE_API_URL/schema/",
     "api:check": "pnpm api:gen && git diff --exit-code",
     "preinstall": "npx only-allow pnpm",
@@ -32,6 +33,13 @@
     "openapi-typescript": "^6.6.4",
     "openapi-typescript-codegen": "^0.30.1",
     "husky": "^9.0.11",
-    "axios": "^1.6.7"
+    "axios": "^1.6.7",
+    "vitest": "^1.5.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.4.3",
+    "jsdom": "^22.1.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react-hooks": "^0.1.0",
+    "@vitest/coverage-c8": "^0.4.0"
   }
 }
