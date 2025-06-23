@@ -48,3 +48,17 @@ const dados = await api.get('/api/dashboard/');
 ```
 
 Tokens são salvos em `localStorage` e renovados automaticamente.
+
+### Autenticação no Frontend
+
+As telas **Login** (`/login`) e **Recuperar Senha** (`/password-reset`) utilizam componentes da Mantine.
+Após autenticar, a aplicação grava `access`, `refresh` e `role` em `localStorage`.
+O redirecionamento pós-login considera o `role` do usuário:
+
+| Role       | Rota inicial        |
+|------------|--------------------|
+| `ADMIN`    | `/dashboard`       |
+| `TECH`     | `/work-orders`     |
+| `CLIENT`   | `/work-orders/my`  |
+
+Rotas privadas usam `<PrivateRoute>` para exigir token válido.
