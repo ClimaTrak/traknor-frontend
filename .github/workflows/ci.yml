@@ -26,7 +26,11 @@ jobs:
         with:
           path: ~/.pnpm-store
           key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm lint
-      - run: pnpm test:coverage
-      - run: pnpm --filter frontend build
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Lint
+        run: pnpm lint
+      - name: Unit Tests
+        run: pnpm test:coverage
+      - name: Build
+        run: pnpm --filter frontend build

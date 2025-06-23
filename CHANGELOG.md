@@ -20,3 +20,4 @@
 - Hook pre-commit ignora etapas locais no CI (Closes #32)
 - Move `vite.config.ts` para a raiz e atualiza scripts `dev`/`build` (Closes #33)
 - Torna `setup.sh` compatível com Windows usando corepack e `pnpm env` (Closes #34)
+- Workflow CI executa lint e testes automatizados (Closes #35)
