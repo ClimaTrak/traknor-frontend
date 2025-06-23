@@ -21,3 +21,4 @@
 - Move `vite.config.ts` para a raiz e atualiza scripts `dev`/`build` (Closes #33)
 - Torna `setup.sh` compatível com Windows usando corepack e `pnpm env` (Closes #34)
 - Workflow CI executa lint e testes automatizados (Closes #35)
+- Dockerfile multi-stage e exemplo `docker-compose.yml` para rodar frontend e backend (Closes #36)
