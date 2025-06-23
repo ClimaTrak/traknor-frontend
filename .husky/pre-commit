@@ -1,6 +1,11 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+if [ "$CI" = "true" ]; then
+  echo "CI detected – skipping local-only checks"
+  exit 0
+fi
+
 if ! grep -q "VITE_API_URL=" .env 2>/dev/null; then
   echo "❌ VITE_API_URL não configurado em .env" >&2
   exit 1
