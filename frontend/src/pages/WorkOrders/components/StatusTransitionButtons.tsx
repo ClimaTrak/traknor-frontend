@@ -17,8 +17,8 @@ const StatusTransitionButtons = ({ id, role }: Props) => {
   if (!choices) return null;
 
   const allowed = (value: string) => {
-    if (role === 'ADMIN') return true;
-    if (role === 'TECH' && value === 'DONE') return true;
+    if (role === 'admin') return true;
+    if (role === 'technician' && value === 'DONE') return true;
     return false;
   };
 

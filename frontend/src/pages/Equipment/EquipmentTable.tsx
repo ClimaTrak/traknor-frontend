@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { Button, Group, Loader, Stack } from '@mantine/core';
+import { Button, Group, Loader, Stack, ActionIcon } from '@mantine/core';
+import { IconTrash } from '@mantine/icons-react';
 import { MantineDataTable } from '@mantine/datatable';
 import { useGetApiEquipment, useDeleteApiEquipmentById } from '@/api/generated/hooks/equipment';
 import { Equipment } from '@/api/generated/schemas';
 import EquipmentFormModal from './EquipmentFormModal';
+import { isAuthorized } from '@/utils/permissions';
 
 const EquipmentTable = () => {
   const [page, setPage] = useState(1);
@@ -40,7 +42,15 @@ const EquipmentTable = () => {
               render: (record) => (
                 <Group gap="xs">
                   <Button size="xs" onClick={() => { setEditing(record); setOpened(true); }}>Editar</Button>
-                  <Button size="xs" color="red" onClick={() => deleteMutation.mutate(record.id)}>Excluir</Button>
+                  {isAuthorized(['admin']) && (
+                    <ActionIcon
+                      color="red"
+                      aria-label="Excluir"
+                      onClick={() => deleteMutation.mutate(record.id)}
+                    >
+                      <IconTrash />
+                    </ActionIcon>
+                  )}
                 </Group>
               ),
             },
