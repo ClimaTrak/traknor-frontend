@@ -12,3 +12,4 @@
 - CRUD de Equipamentos com importação CSV
 - Lista e detalhe de Ordens de Serviço com transições de status
 - Suporte a mirror de registry npm via `.npmrc` (Closes #27)
+- Dashboard KPIs com auto-refresh (Closes #26)
