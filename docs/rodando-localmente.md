@@ -13,7 +13,8 @@ Este documento descreve passo a passo como executar a aplicação front-end do C
 ```bash
 git clone <url-do-repositorio>
 cd traknor-frontend
-pnpm install
+cp .env.example .env
+./setup.sh   # use --mirror se necessário
 ```
 
 Se já possui o projeto clonado, atualize as dependências com:

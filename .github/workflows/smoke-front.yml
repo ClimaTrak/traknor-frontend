@@ -1,0 +1,23 @@
+name: smoke-front
+
+on:
+  pull_request:
+    paths:
+      - 'frontend/**'
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
+      - name: Install dependencies
+        run: pnpm install --registry ${NPM_REGISTRY:-https://registry.npmmirror.com}
+      - name: Build frontend
+        run: pnpm --filter frontend build
+      - name: Run vitest
+        run: pnpm --filter frontend vitest run
