@@ -7,3 +7,4 @@
 - Proteção de rotas via `<PrivateRoute>`
 - Sincronização automática dos tipos da API (Closes #22)
 - Aplicação de layout base com Mantine AppShell
+- CRUD de Equipamentos com importação CSV
