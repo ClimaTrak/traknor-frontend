@@ -21,6 +21,13 @@ For a detailed step-by-step guide on running the project locally, see [docs/roda
 2. Inicie o servidor de desenvolvimento com `pnpm dev`.
 3. Abra `http://localhost:5173` no navegador e verifique se a página inicial é exibida sem erros.
 
+## Problemas de Registry
+Se sua rede bloquear `registry.npmjs.org`, defina:
+```bash
+export NPM_REGISTRY=https://registry.npmmirror.com
+pnpm install
+```
+
 ### Formatting and Linting
 
 For instructions on setting up the project in Visual Studio Code, see [docs/setup-vscode.md](docs/setup-vscode.md).

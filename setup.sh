@@ -15,7 +15,7 @@ echo "✅ pnpm disponível: $(pnpm -v)"
 # 2. Instala dependências do monorepo
 ###############################################################################
 echo "📦 Instalando dependências (root/workspace)..."
-pnpm install
+pnpm install --registry="${NPM_REGISTRY:-https://registry.npmmirror.com}"
 
 ###############################################################################
 # 3. Garante @tanstack/react-query para todo o workspace

@@ -11,3 +11,4 @@
 - Aplicação de layout base com Mantine AppShell
 - CRUD de Equipamentos com importação CSV
 - Lista e detalhe de Ordens de Serviço com transições de status
+- Suporte a mirror de registry npm via `.npmrc` (Closes #27)

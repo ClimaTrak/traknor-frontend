@@ -8,7 +8,9 @@
     "lint": "pnpm --filter frontend run lint",
     "test": "pnpm --filter frontend run test",
     "api:gen": "openapi-typescript $VITE_API_URL/schema/ -o frontend/src/api/generated/schemas.ts && openapi-typescript-codegen --client axios -o frontend/src/api/generated --useOptions --useUnionTypes $VITE_API_URL/schema/",
-    "api:check": "pnpm api:gen && git diff --exit-code"
+    "api:check": "pnpm api:gen && git diff --exit-code",
+    "preinstall": "npx only-allow pnpm",
+    "ci:install": "pnpm install --registry=${NPM_REGISTRY:-https://registry.npmmirror.com}"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
