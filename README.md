@@ -67,3 +67,7 @@ Rotas privadas usam `<PrivateRoute>` para exigir token válido.
 
 - `pnpm api:gen` → gera/atualiza tipos e hooks
 - `pnpm api:check` → gera e falha se houver diferenças (usado no CI e pre-commit)
+
+## Layout & Tema
+- Cores primárias: #002d2b | #00968f | #00fff4
+- Componente AppShell em `src/components/Layout`
