@@ -15,3 +15,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build compose services
         run: docker compose build
+      - name: Up & health-check
+        run: |
+          docker compose up -d backend frontend
+          sleep 20
+          curl -f http://localhost:5173 || (echo "Frontend not responding" && exit 1)

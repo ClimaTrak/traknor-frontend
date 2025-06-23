@@ -4,6 +4,7 @@ services:
     image: ghcr.io/climatrak/traknor-backend:latest
     ports:
       - "8000:8000"
+    networks: [climatrak]
   frontend:
     build:
       context: .
@@ -13,3 +14,7 @@ services:
       - "3000:80"
     depends_on:
       - backend
+    networks: [climatrak]
+
+networks:
+  climatrak: {}
