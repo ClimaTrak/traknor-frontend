@@ -42,6 +42,16 @@ pnpm format
 pnpm format:check
 ```
 
+## Rodando Testes
+
+Execute a suíte de testes e gere o relatório de cobertura com:
+
+```bash
+pnpm test:coverage
+```
+
+Commits e builds falham se a cobertura ficar abaixo de 80%.
+
 ## Camada de API & Auth
 
 Todas as chamadas HTTP utilizam a instância `api` configurada em `src/infrastructure/api/axios.ts`. Antes de consumir, defina `VITE_API_URL` no `.env` apontando para o backend.

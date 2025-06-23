@@ -15,3 +15,4 @@
 - Dashboard KPIs com auto-refresh (Closes #26)
 - Exporta relatórios em PDF ou Excel pela página `/reports` (Closes #27)
 - Controle de acesso por papéis com `<RoleRoute>` e página de erro 403 (Closes #28)
+- Configura Vitest e React Testing Library com cobertura mínima de 80% (Closes #29)
