@@ -1,6 +1,7 @@
 import { RouteObject, createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AppShell from './components/Layout/AppShell';
 import StubPage from './pages/StubPage';
+import DashboardView from './pages/Dashboard/DashboardView';
 
 const routes: RouteObject[] = [
   {
@@ -8,6 +9,7 @@ const routes: RouteObject[] = [
     element: <AppShell />,
     children: [
       { index: true, element: <StubPage title="Visão Geral" /> },
+      { path: 'dashboard', element: <DashboardView /> },
       { path: 'ativos', element: <StubPage title="Ativos" /> },
       { path: 'ordens', element: <StubPage title="Ordens" /> },
       { path: 'solicitacoes', element: <StubPage title="Solicitações" /> },

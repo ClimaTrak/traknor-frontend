@@ -89,3 +89,7 @@ Os dados são obtidos via hooks gerados em `src/api/generated/hooks/equipment.ts
 ## Ordens de Serviço
 
 A partir da rota `/app/work-orders` é possível visualizar uma caixa de entrada de OS e o detalhe da seleção ao lado. As ações de mudança de status são carregadas dinamicamente e requerem permissão conforme o papel do usuário.
+
+## Dashboard KPIs
+
+A página `/dashboard` exibe indicadores-chave de manutenção (MTTR, MTBF e contagem de ordens de serviço) em cartões visuais. Os valores são atualizados automaticamente a cada 60 segundos utilizando **@tanstack/react-query**.
