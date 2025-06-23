@@ -17,13 +17,13 @@ import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import { useAuthStore } from '../../../stores/useAuthStore';
 
 const baseLinks = [
-  { label: 'Visão Geral', to: '/app/overview', roles: ['ADMIN', 'TECH', 'CLIENT'] },
-  { label: 'Equipamentos', to: '/app/equipamentos', roles: ['ADMIN', 'TECH', 'CLIENT'] },
-  { label: 'Usuários', to: '/app/usuarios', roles: ['ADMIN'] },
-  { label: 'Ordens de Serviço', to: '/app/work-orders', roles: ['ADMIN', 'TECH'] },
-  { label: 'Planos', to: '/app/plans', roles: ['ADMIN'] },
-  { label: 'Métricas', to: '/app/metrics', roles: ['ADMIN'] },
-  { label: 'Relatórios', to: '/app/reports', roles: ['ADMIN', 'CLIENT'] },
+  { label: 'Visão Geral', to: '/app/overview', roles: ['admin', 'manager', 'technician'] },
+  { label: 'Equipamentos', to: '/app/equipamentos', roles: ['admin', 'manager', 'technician'] },
+  { label: 'Usuários', to: '/app/usuarios', roles: ['admin'] },
+  { label: 'Ordens de Serviço', to: '/app/work-orders', roles: ['admin', 'technician'] },
+  { label: 'Planos', to: '/app/plans', roles: ['admin'] },
+  { label: 'Métricas', to: '/app/metrics', roles: ['admin'] },
+  { label: 'Relatórios', to: '/app/reports', roles: ['admin', 'manager'] },
 ];
 
 const TopNav = () => {
@@ -31,7 +31,7 @@ const TopNav = () => {
   const [opened, { toggle, close }] = useDisclosure(false);
   const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
   const [module, setModule] = useState('TrakNor');
-  const role = useAuthStore((s) => s.user?.role ?? 'CLIENT');
+  const role = useAuthStore((s) => s.user?.role ?? 'technician');
   const links = baseLinks.filter((l) => l.roles.includes(role));
 
   const items = links.map((link) => (

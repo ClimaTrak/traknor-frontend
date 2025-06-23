@@ -1,9 +1,9 @@
 import { User, UserInput } from '../domain/user';
 
 let users: User[] = [
-  { id: 1, name: 'Admin', email: 'admin@example.com', role: 'ADMIN', active: true },
-  { id: 2, name: 'Técnico', email: 'tech@example.com', role: 'TECH', active: true },
-  { id: 3, name: 'Cliente', email: 'client@example.com', role: 'CLIENT', active: true },
+  { id: 1, name: 'Admin', email: 'admin@example.com', role: 'admin', active: true },
+  { id: 2, name: 'Manager', email: 'manager@example.com', role: 'manager', active: true },
+  { id: 3, name: 'Technician', email: 'tech@example.com', role: 'technician', active: true },
 ];
 
 const delay = () => new Promise((r) => setTimeout(r, 100));

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const roleEnum = z.enum(['ADMIN', 'TECH', 'CLIENT']);
+export const roleEnum = z.enum(['admin', 'manager', 'technician']);
 
 export const userSchema = z.object({
   name: z.string().nonempty('Nome é obrigatório'),

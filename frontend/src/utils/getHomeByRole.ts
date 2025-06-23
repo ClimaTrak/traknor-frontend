@@ -2,11 +2,11 @@ import { Role } from '../domain/auth';
 
 export function getHomeByRole(role: Role | null | undefined): string {
   switch (role) {
-    case 'ADMIN':
+    case 'admin':
       return '/dashboard';
-    case 'TECH':
-      return '/work-orders';
-    case 'CLIENT':
+    case 'manager':
+      return '/dashboard';
+    case 'technician':
       return '/work-orders/my';
     default:
       return '/dashboard';

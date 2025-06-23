@@ -99,3 +99,19 @@ A página `/dashboard` exibe indicadores-chave de manutenção (MTTR, MTBF e con
 ## Relatórios
 
 A página `/reports` permite gerar relatórios em PDF ou Excel dos equipamentos ou ordens de serviço. Selecione o tipo e formato desejados e clique em **Download** para iniciar a geração. Um toast informa o andamento e o arquivo é salvo automaticamente.
+
+## Controle de Acesso
+
+As rotas e ações são protegidas conforme o papel do usuário (`admin`, `manager`, `technician`). Utilize o componente `<RoleRoute>` para restringir páginas:
+
+```tsx
+<Route element={<RoleRoute allowedRoles={['admin']} />}>
+  <Route path="/usuarios" element={<UsuariosPage />} />
+</Route>
+```
+
+Para verificar permissões em componentes:
+
+```tsx
+{isAuthorized(['admin']) && <ActionIcon aria-label="Excluir" />}
+```
