@@ -4,7 +4,7 @@ Este documento descreve os passos para clonar e executar o front-end do projeto 
 
 ## 1. Requisitos
 
-- **Node.js** 16 ou superior
+ - **Node.js** 20 (via nvm no Linux/Mac ou `pnpm env` no Windows)
 - **pnpm** (gerenciador de pacotes)
 - **Git** para clonar o repositório
 - (Opcional) Extensão _ESLint_ no VS Code para feedback de lint em tempo real

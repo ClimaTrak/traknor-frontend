@@ -1,57 +1,43 @@
 #!/usr/bin/env bash
-set -e  # para o script se qualquer comando falhar
+set -euo pipefail
 
-echo "==> Instalando dependências do workspace root…"
-pnpm install --frozen-lockfile
+USE_MIRROR=false
+for arg in "$@"; do
+  if [[ "$arg" == "--mirror" ]]; then
+    USE_MIRROR=true
+  fi
+done
 
-echo "==> Entrando no pacote frontend…"
-cd frontend
+OS=$(uname -o 2>/dev/null || echo "unknown")
+NODE_VERSION=20
 
-echo "==> Adicionando Vite e plugins…"
-pnpm add -D vite @vitejs/plugin-react vite-tsconfig-paths
+if echo "$OS" | grep -qi 'mingw'; then
+  echo "Windows detected – using corepack instead of nvm"
+  corepack enable pnpm
+  pnpm env use --global "$NODE_VERSION"
+else
+  if command -v nvm >/dev/null; then
+    source "$(command -v nvm | sed 's/bin\/nvm$/nvm.sh/')"
+  else
+    curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+    source "$HOME/.nvm/nvm.sh"
+  fi
+  nvm install "$NODE_VERSION"
+  nvm use "$NODE_VERSION"
+fi
 
-echo "==> Gerando vite.config.ts…"
-cat > vite.config.ts <<'EOF'
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tsconfigPaths from 'vite-tsconfig-paths'
+echo "🔧 Using Node $(node -v)"
 
-export default defineConfig({
-  plugins: [react(), tsconfigPaths()],
-  server: { port: 5173 },
-})
-EOF
+if ! command -v pnpm >/dev/null; then
+  corepack enable
+  corepack prepare pnpm@latest --activate
+fi
 
-echo "==> Garantindo scripts no package.json…"
-npx json -I -f package.json -e '
-  this.scripts ||= {};
-  this.scripts.dev     = "vite";
-  this.scripts.build   = "vite build";
-  this.scripts.preview = "vite preview";
-  this.scripts.lint    = "eslint \"src/**/*.{ts,tsx}\" --fix";
-'
+echo "📦 Installing dependencies..."
+REGISTRY="https://registry.npmjs.org"
+if $USE_MIRROR; then
+  REGISTRY="https://registry.npmmirror.com"
+fi
+pnpm install --registry "$REGISTRY"
 
-echo "==> Configurando ESLint + Prettier (se ainda não houver)…"
-pnpm add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin \
-  eslint-config-prettier eslint-plugin-react eslint-plugin-react-hooks \
-  eslint-plugin-import eslint-import-resolver-typescript
-
-cat > .eslintrc.cjs <<'EOF'
-module.exports = {
-  root: true,
-  parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'import'],
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
-    'plugin:import/typescript',
-    'prettier'
-  ],
-  settings: { react: { version: 'detect' } }
-}
-EOF
-
-echo "✅  Setup concluído! Agora você pode rodar:  pnpm run dev"
+echo "✅ Setup completo"

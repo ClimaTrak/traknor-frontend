@@ -4,7 +4,7 @@ Este documento descreve passo a passo como executar a aplicação front-end do C
 
 ## 1. Requisitos
 
-- **Node.js** 16 ou superior
+ - **Node.js** 20 (via nvm no Linux/Mac ou `pnpm env` no Windows)
 - **pnpm** como gerenciador de pacotes
 - **Git** para clonar o repositório
 
@@ -13,7 +13,8 @@ Este documento descreve passo a passo como executar a aplicação front-end do C
 ```bash
 git clone <url-do-repositorio>
 cd traknor-frontend
-pnpm install
+cp .env.example .env
+./setup.sh   # use --mirror se necessário
 ```
 
 Se já possui o projeto clonado, atualize as dependências com:
@@ -26,6 +27,8 @@ pnpm update
 
 ```bash
 pnpm dev
+# Se optar por manter `vite.config.ts` dentro de `frontend`, utilize:
+# vite --config frontend/vite.config.ts
 ```
 
 A aplicação ficará disponível em `http://localhost:5173`.

@@ -15,12 +15,11 @@
     "paths": {
       "@/*": ["./*"]
     },
-    "types": ["jest"]
+    "types": []
   },
   "include": [
     "frontend/src",
     "frontend/tests",
-    "frontend/setupTests.ts",
-    "frontend/cypress"
+    "frontend/setupTests.ts"
   ]
 }

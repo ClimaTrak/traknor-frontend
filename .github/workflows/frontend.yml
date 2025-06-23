@@ -10,19 +10,30 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v2
         with:
           version: 8
+          run_install: false
+      - name: Restore pnpm store
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --registry ${{ env.NPM_REGISTRY }}
+        env:
+          NPM_REGISTRY: https://registry.npmmirror.com
+      - name: Check OpenAPI types up-to-date
+        run: pnpm api:check
       - name: Lint
         run: pnpm lint
-      - name: Test
-        run: pnpm test
-      - name: Build
-        run: pnpm --filter frontend build
+      - name: Run tests and build
+        run: pnpm test:coverage && pnpm --filter frontend build
       - name: Build Storybook
         run: pnpm --filter frontend build-storybook
         if: false
