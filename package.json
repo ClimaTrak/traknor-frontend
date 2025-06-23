@@ -6,7 +6,8 @@
   ],
   "scripts": {
     "lint": "pnpm --filter frontend run lint",
-    "test": "pnpm --filter frontend run test"
+    "test": "pnpm --filter frontend run test",
+    "api:gen": "openapi-typescript http://localhost:8000/schema/openapi.json -o frontend/src/infrastructure/api/types/generated.ts"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
