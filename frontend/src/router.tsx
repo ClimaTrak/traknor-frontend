@@ -1,7 +1,12 @@
-import { RouteObject, createBrowserRouter, RouterProvider } from 'react-router-dom';
+import {
+  RouteObject,
+  createBrowserRouter,
+  RouterProvider,
+} from 'react-router-dom';
 import AppShell from './components/Layout/AppShell';
 import StubPage from './pages/StubPage';
 import DashboardView from './pages/Dashboard/DashboardView';
+import ReportDownloader from './pages/Reports/ReportDownloader';
 
 const routes: RouteObject[] = [
   {
@@ -16,7 +21,7 @@ const routes: RouteObject[] = [
       { path: 'planos', element: <StubPage title="Planos" /> },
       { path: 'metricas', element: <StubPage title="Métricas" /> },
       { path: 'usuarios', element: <StubPage title="Usuários" /> },
-      { path: 'relatorios', element: <StubPage title="Relatórios" /> },
+      { path: 'reports', element: <ReportDownloader /> },
     ],
   },
 ];

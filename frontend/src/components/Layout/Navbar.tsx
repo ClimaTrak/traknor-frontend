@@ -1,6 +1,15 @@
 import { NavLink } from 'react-router-dom';
 import { Navbar as MantineNavbar, Stack } from '@mantine/core';
-import { IconHome2, IconDeviceDesktopAnalytics, IconClipboardList, IconFileText, IconListCheck, IconUsers, IconReportAnalytics, IconGauge } from '@mantine/icons-react';
+import {
+  IconHome2,
+  IconDeviceDesktopAnalytics,
+  IconClipboardList,
+  IconFileText,
+  IconListCheck,
+  IconUsers,
+  IconReportAnalytics,
+  IconGauge,
+} from '@mantine/icons-react';
 
 const menu = [
   { label: 'Visão Geral', icon: IconGauge, to: '/' },
@@ -10,7 +19,7 @@ const menu = [
   { label: 'Planos', icon: IconListCheck, to: '/planos' },
   { label: 'Métricas', icon: IconHome2, to: '/metricas' },
   { label: 'Usuários', icon: IconUsers, to: '/usuarios' },
-  { label: 'Relatórios', icon: IconReportAnalytics, to: '/relatorios' },
+  { label: 'Relatórios', icon: IconReportAnalytics, to: '/reports' },
 ];
 
 const Navbar = () => (
