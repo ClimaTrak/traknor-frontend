@@ -5,6 +5,8 @@
     "frontend"
   ],
   "scripts": {
+    "dev": "pnpm --filter frontend exec vite -- --config vite.config.ts",
+    "build": "pnpm --filter frontend exec vite build -- --config vite.config.ts",
     "lint": "pnpm --filter frontend run lint",
     "format": "pnpm --filter frontend run format",
     "perf": "react-codemod --analysis",

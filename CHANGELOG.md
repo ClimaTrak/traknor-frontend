@@ -18,3 +18,4 @@
 - Configura Vitest e React Testing Library com cobertura mínima de 80% (Closes #29)
 - Setup local de frontend com proxy e script `setup.sh` (SB30)
 - Hook pre-commit ignora etapas locais no CI (Closes #32)
+- Move `vite.config.ts` para a raiz e atualiza scripts `dev`/`build` (Closes #33)
