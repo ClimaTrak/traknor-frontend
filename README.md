@@ -21,7 +21,7 @@ For a detailed step-by-step guide on running the project locally, see [docs/roda
 
 ### Pré-requisitos
 
-- Node 20 gerenciado via [nvm](https://github.com/nvm-sh/nvm)
+ - Node 20 via [nvm](https://github.com/nvm-sh/nvm) (Linux/Mac) ou `pnpm env` (Windows)
 - pnpm
 
 ### Passo a passo

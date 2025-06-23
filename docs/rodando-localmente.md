@@ -4,7 +4,7 @@ Este documento descreve passo a passo como executar a aplicação front-end do C
 
 ## 1. Requisitos
 
-- **Node.js** 16 ou superior
+ - **Node.js** 20 (via nvm no Linux/Mac ou `pnpm env` no Windows)
 - **pnpm** como gerenciador de pacotes
 - **Git** para clonar o repositório
 

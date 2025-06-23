@@ -8,15 +8,23 @@ for arg in "$@"; do
   fi
 done
 
+OS=$(uname -o 2>/dev/null || echo "unknown")
 NODE_VERSION=20
-if command -v nvm >/dev/null; then
-  source "$(command -v nvm | sed 's/bin\/nvm$/nvm.sh/')"
+
+if echo "$OS" | grep -qi 'mingw'; then
+  echo "Windows detected – using corepack instead of nvm"
+  corepack enable pnpm
+  pnpm env use --global "$NODE_VERSION"
 else
-  curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-  source "$HOME/.nvm/nvm.sh"
+  if command -v nvm >/dev/null; then
+    source "$(command -v nvm | sed 's/bin\/nvm$/nvm.sh/')"
+  else
+    curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+    source "$HOME/.nvm/nvm.sh"
+  fi
+  nvm install "$NODE_VERSION"
+  nvm use "$NODE_VERSION"
 fi
-nvm install "$NODE_VERSION"
-nvm use "$NODE_VERSION"
 
 echo "🔧 Using Node $(node -v)"
 
