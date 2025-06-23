@@ -9,6 +9,8 @@ Install dependencies and start the dev server from the repository root:
 ```bash
 pnpm install
 pnpm dev
+# Se preferir manter o arquivo em `frontend/vite.config.ts`, rode:
+# vite --config frontend/vite.config.ts
 ```
 
 The application will be available at http://localhost:5173 showing **Hello ClimaTrak**.
