@@ -32,3 +32,19 @@ pnpm lint
 pnpm format
 pnpm format:check
 ```
+
+## Camada de API & Auth
+
+Todas as chamadas HTTP utilizam a instância `api` configurada em `src/infrastructure/api/axios.ts`. Antes de consumir, defina `VITE_API_URL` no `.env` apontando para o backend.
+
+Exemplo de login e chamada autenticada:
+
+```ts
+import { login } from '@/infrastructure/api/auth';
+import { api } from '@/infrastructure/api/axios';
+
+await login({ username: 'alice', password: '123' });
+const dados = await api.get('/api/dashboard/');
+```
+
+Tokens são salvos em `localStorage` e renovados automaticamente.
