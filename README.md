@@ -63,6 +63,15 @@ docker compose up --build
 A aplicação ficará acessível em `http://localhost:3000`. O Nginx do container
 redireciona requisições `\*/api` para o serviço `backend` na porta 8000.
 
+### Rodando somente o frontend
+
+Caso possua um backend remoto disponível, rode apenas o serviço de frontend apontando para ele:
+
+```bash
+BACKEND_URL=https://api-stage.climatrak.com docker compose up -d frontend
+```
+
+
 ### Formatting and Linting
 
 For instructions on setting up the project in Visual Studio Code, see [docs/setup-vscode.md](docs/setup-vscode.md).
