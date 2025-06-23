@@ -15,11 +15,31 @@ The application will be available at http://localhost:5173 showing **Hello Clima
 
 For a detailed step-by-step guide on running the project locally, see [docs/rodando-localmente.md](docs/rodando-localmente.md).
 
-## Como rodar
+## ▶️ Rodando localmente
 
-1. Execute `pnpm install` na raiz do repositório para instalar as dependências.
-2. Inicie o servidor de desenvolvimento com `pnpm dev`.
-3. Abra `http://localhost:5173` no navegador e verifique se a página inicial é exibida sem erros.
+### Pré-requisitos
+
+- Node 20 gerenciado via [nvm](https://github.com/nvm-sh/nvm)
+- pnpm
+
+### Passo a passo
+
+```bash
+cp .env.example .env
+./setup.sh        # use --mirror se sua rede bloquear o npm
+pnpm dev
+```
+
+Abra `http://localhost:5173` e verifique se a home aparece sem erros.
+
+### Problemas comuns
+
+| Problema | Solução |
+| -------- | ------- |
+| Registry bloqueado | Execute `./setup.sh --mirror` |
+| Erro CORS nas chamadas | Garanta que o backend em `http://localhost:8000` está rodando |
+| Porta 5173 ocupada | Defina `PORT=5174` no `.env` |
+| Backend inativo | Rode `docker compose -f docker-compose.dev.yml up -d backend` |
 
 ## Problemas de Registry
 
