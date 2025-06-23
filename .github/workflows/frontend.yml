@@ -17,6 +17,8 @@ jobs:
           version: 8
       - name: Install dependencies
         run: pnpm install
+      - name: Check OpenAPI types up-to-date
+        run: pnpm api:check
       - name: Lint
         run: pnpm lint
       - name: Test
