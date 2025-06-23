@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo, useMemo, useCallback } from 'react';
 import { Grid, Loader, Center, Stack, TextInput, Select } from '@mantine/core';
 import { MantineDataTable } from '@mantine/datatable';
 import { useWorkOrders } from '@/modules/workorders/application/useWorkOrders';
@@ -34,6 +34,22 @@ const WorkOrderInbox = () => {
 
   const records = data ?? [];
 
+  const columns = useMemo(
+    () => [
+      { accessor: 'id', title: 'Nº OS' },
+      { accessor: 'titulo', title: 'Título' },
+      { accessor: 'prioridade', title: 'Prioridade' },
+      { accessor: 'equipamento', title: 'Equipamento' },
+      { accessor: 'status', title: 'Status' },
+      { accessor: 'dataAbertura', title: 'Abertura' },
+    ],
+    [],
+  );
+
+  const handleRowClick = useCallback((record: WorkOrder) => {
+    setSelected(record.id);
+  }, []);
+
   return (
     <Grid>
       <Grid.Col span={{ base: 12, md: 6 }}>
@@ -61,20 +77,13 @@ const WorkOrderInbox = () => {
           {!isLoading && (
             <MantineDataTable
               records={records}
-              columns={[
-                { accessor: 'id', title: 'Nº OS' },
-                { accessor: 'titulo', title: 'Título' },
-                { accessor: 'prioridade', title: 'Prioridade' },
-                { accessor: 'equipamento', title: 'Equipamento' },
-                { accessor: 'status', title: 'Status' },
-                { accessor: 'dataAbertura', title: 'Abertura' },
-              ]}
+              columns={columns}
               totalRecords={records.length}
               recordsPerPage={10}
               page={page}
               onPageChange={setPage}
               rowStyle={() => ({ cursor: 'pointer' })}
-              onRowClick={(record) => setSelected(record.id)}
+              onRowClick={handleRowClick}
             />
           )}
         </Stack>
@@ -90,4 +99,4 @@ const WorkOrderInbox = () => {
   );
 };
 
-export default WorkOrderInbox;
+export default memo(WorkOrderInbox);

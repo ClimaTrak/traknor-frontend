@@ -10,6 +10,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v2
@@ -29,10 +32,8 @@ jobs:
         run: pnpm api:check
       - name: Lint
         run: pnpm lint
-      - name: Run unit tests with coverage
-        run: pnpm test:coverage
-      - name: Build
-        run: pnpm --filter frontend build
+      - name: Run tests and build
+        run: pnpm test:coverage && pnpm --filter frontend build
       - name: Build Storybook
         run: pnpm --filter frontend build-storybook
         if: false

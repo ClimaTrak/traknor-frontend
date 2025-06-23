@@ -6,6 +6,8 @@
   ],
   "scripts": {
     "lint": "pnpm --filter frontend run lint",
+    "format": "pnpm --filter frontend run format",
+    "perf": "react-codemod --analysis",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "api:gen": "openapi-typescript $VITE_API_URL/schema/ -o frontend/src/api/generated/schemas.ts && openapi-typescript-codegen --client axios -o frontend/src/api/generated --useOptions --useUnionTypes $VITE_API_URL/schema/",
@@ -40,6 +42,8 @@
     "jsdom": "^22.1.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react-hooks": "^0.1.0",
-    "@vitest/coverage-c8": "^0.4.0"
+    "@vitest/coverage-c8": "^0.4.0",
+    "eslint-plugin-unused-imports": "^3.2.0",
+    "react-codemod": "^5.0.0"
   }
 }

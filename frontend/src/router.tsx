@@ -3,12 +3,14 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
+import { Loader } from '@mantine/core';
 import AppShell from './components/Layout/AppShell';
-import StubPage from './pages/StubPage';
-import DashboardView from './pages/Dashboard/DashboardView';
-import ReportDownloader from './pages/Reports/ReportDownloader';
+const StubPage = lazy(() => import('./pages/StubPage'));
+const DashboardView = lazy(() => import('./pages/Dashboard/DashboardView'));
+const ReportDownloader = lazy(() => import('./pages/Reports/ReportDownloader'));
 import RoleRoute from './router/RoleRoute';
-import Forbidden from './pages/Error/Forbidden';
+const Forbidden = lazy(() => import('./pages/Error/Forbidden'));
 
 const routes: RouteObject[] = [
   {
@@ -17,7 +19,9 @@ const routes: RouteObject[] = [
     children: [
       { index: true, element: <StubPage title="Visão Geral" /> },
       {
-        element: <RoleRoute allowedRoles={['admin', 'manager', 'technician']} />,
+        element: (
+          <RoleRoute allowedRoles={['admin', 'manager', 'technician']} />
+        ),
         children: [{ path: 'dashboard', element: <DashboardView /> }],
       },
       { path: 'ativos', element: <StubPage title="Ativos" /> },
@@ -27,7 +31,9 @@ const routes: RouteObject[] = [
       { path: 'metricas', element: <StubPage title="Métricas" /> },
       {
         element: <RoleRoute allowedRoles={['admin']} />,
-        children: [{ path: 'usuarios', element: <StubPage title="Usuários" /> }],
+        children: [
+          { path: 'usuarios', element: <StubPage title="Usuários" /> },
+        ],
       },
       {
         element: <RoleRoute allowedRoles={['admin', 'manager']} />,
@@ -35,7 +41,9 @@ const routes: RouteObject[] = [
       },
       {
         element: <RoleRoute allowedRoles={['technician']} />,
-        children: [{ path: 'work-orders/my', element: <StubPage title="Minhas OS" /> }],
+        children: [
+          { path: 'work-orders/my', element: <StubPage title="Minhas OS" /> },
+        ],
       },
     ],
   },
@@ -44,6 +52,10 @@ const routes: RouteObject[] = [
 
 const router = createBrowserRouter(routes);
 
-const Router = () => <RouterProvider router={router} />;
+const Router = () => (
+  <Suspense fallback={<Loader />}>
+    <RouterProvider router={router} />
+  </Suspense>
+);
 
 export default Router;
