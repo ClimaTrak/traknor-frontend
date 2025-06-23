@@ -52,6 +52,17 @@ export NPM_REGISTRY=https://registry.npmmirror.com
 pnpm install
 ```
 
+## Rodando tudo em Docker
+
+Para subir frontend e backend de exemplo com um único comando, execute:
+
+```bash
+docker compose up --build
+```
+
+A aplicação ficará acessível em `http://localhost:3000`. O Nginx do container
+redireciona requisições `\*/api` para o serviço `backend` na porta 8000.
+
 ### Formatting and Linting
 
 For instructions on setting up the project in Visual Studio Code, see [docs/setup-vscode.md](docs/setup-vscode.md).
