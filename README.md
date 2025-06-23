@@ -22,7 +22,9 @@ For a detailed step-by-step guide on running the project locally, see [docs/roda
 3. Abra `http://localhost:5173` no navegador e verifique se a página inicial é exibida sem erros.
 
 ## Problemas de Registry
+
 Se sua rede bloquear `registry.npmjs.org`, defina:
+
 ```bash
 export NPM_REGISTRY=https://registry.npmmirror.com
 pnpm install
@@ -93,3 +95,7 @@ A partir da rota `/app/work-orders` é possível visualizar uma caixa de entrada
 ## Dashboard KPIs
 
 A página `/dashboard` exibe indicadores-chave de manutenção (MTTR, MTBF e contagem de ordens de serviço) em cartões visuais. Os valores são atualizados automaticamente a cada 60 segundos utilizando **@tanstack/react-query**.
+
+## Relatórios
+
+A página `/reports` permite gerar relatórios em PDF ou Excel dos equipamentos ou ordens de serviço. Selecione o tipo e formato desejados e clique em **Download** para iniciar a geração. Um toast informa o andamento e o arquivo é salvo automaticamente.

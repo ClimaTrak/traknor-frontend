@@ -1,0 +1,28 @@
+openapi: 3.0.0
+info:
+  title: Reports API
+  version: 1.0.0
+paths:
+  /api/reports/:
+    get:
+      parameters:
+        - in: query
+          name: type
+          schema:
+            type: string
+            enum: [equipment, workorder]
+          required: true
+        - in: query
+          name: format
+          schema:
+            type: string
+            enum: [pdf, xlsx]
+          required: true
+      responses:
+        "200":
+          description: Report file
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
