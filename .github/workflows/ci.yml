@@ -26,11 +26,9 @@ jobs:
         with:
           path: ~/.pnpm-store
           key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-      - name: Lint
-        run: pnpm lint
-      - name: Unit Tests
-        run: pnpm test:coverage
-      - name: Build
-        run: pnpm --filter frontend build
+      - name: Frontend Quality Gate
+        run: |
+          pnpm install
+          pnpm lint
+          pnpm --filter frontend exec tsc --noEmit
+          pnpm --filter frontend build

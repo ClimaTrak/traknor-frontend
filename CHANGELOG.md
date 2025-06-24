@@ -22,4 +22,5 @@
 - Torna `setup.sh` compatível com Windows usando corepack e `pnpm env` (Closes #34)
 - Workflow CI executa lint e testes automatizados (Closes #35)
 - Dockerfile multi-stage e exemplo `docker-compose.yml` para rodar frontend e backend (Closes #36)
+- Corrige dependências e configurações do frontend garantindo build sem erros (Closes #67)
 - Otimiza Dockerfile, adiciona `.dockerignore`, rede dedicada e verificação no CI (SB37)

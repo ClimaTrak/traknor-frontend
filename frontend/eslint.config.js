@@ -6,8 +6,11 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import importPlugin from 'eslint-plugin-import';
 import prettier from 'eslint-plugin-prettier';
 
+const __dirname = new URL('.', import.meta.url).pathname;
+
 export default [
   {
+    ignores: ['dist/**', 'node_modules/**', 'vite.config.ts'],
     files: ['**/*.ts', '**/*.tsx'],
     languageOptions: {
       parser: tsParser,
