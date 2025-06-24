@@ -1,13 +1,18 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
-COPY package.json pnpm-lock.yaml ./
+
+# copia o lockfile que está na raiz do workspace
+COPY pnpm-workspace.yaml package.json pnpm-lock.yaml ./
+
+# copia código do frontend
 COPY frontend ./frontend
 COPY vite.config.ts ./
-RUN corepack enable && corepack prepare pnpm@8 --activate
-RUN pnpm install --frozen-lockfile
+
+RUN corepack enable && corepack prepare pnpm@10.12.2 --activate
+RUN pnpm install --no-frozen-lockfile
 ARG VITE_API_URL=/api
 ENV VITE_API_URL=$VITE_API_URL
-RUN pnpm build
+RUN pnpm --filter frontend run build
 
 FROM nginx:1.25-alpine
 COPY --from=builder /app/frontend/dist /usr/share/nginx/html

@@ -1,20 +1,14 @@
-version: '3.9'
 services:
-  backend:
-    image: ghcr.io/climatrak/traknor-backend:latest
-    ports:
-      - "8000:8000"
-    networks: [climatrak]
   frontend:
-    build:
-      context: .
-    environment:
-      - VITE_API_URL=/api
+    build: .
+    image: climatrak-frontend
     ports:
-      - "3000:80"
-    depends_on:
-      - backend
-    networks: [climatrak]
+      - "80:80"
+    environment:
+      VITE_API_URL: "http://backend:8000/api"
+    networks:
+      - appnet
 
 networks:
-  climatrak: {}
+  appnet:
+    external: true
