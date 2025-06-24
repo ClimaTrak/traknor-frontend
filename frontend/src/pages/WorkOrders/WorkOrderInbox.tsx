@@ -21,8 +21,8 @@ const statuses = [
 const WorkOrderInbox = () => {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
-  const [status, setStatus] = useState<string | undefined>(undefined);
-  const [priority, setPriority] = useState<string | undefined>(undefined);
+  const [status, setStatus] = useState<string | null>(null);
+  const [priority, setPriority] = useState<string | null>(null);
   const [selected, setSelected] = useState<number | null>(null);
 
   const { data, isLoading, refetch } = useWorkOrders({
