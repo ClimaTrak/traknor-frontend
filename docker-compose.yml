@@ -1,14 +1,13 @@
 services:
   frontend:
-    build: .
-    image: climatrak-frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Passa a variável para o ARG VITE_API_URL no Dockerfile
+        VITE_API_URL: ${BACKEND_URL:-/api} 
     ports:
-      - "80:80"
+      - "3000:80"
     environment:
-      VITE_API_URL: "http://backend:8000/api"
-    networks:
-      - appnet
-
-networks:
-  appnet:
-    external: true
+      # Garante que a variável também esteja disponível se necessário
+      - VITE_API_URL=${BACKEND_URL:-/api}
