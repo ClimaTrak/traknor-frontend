@@ -1,12 +1,13 @@
+// frontend/tsconfig.eslint.json
 {
   "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "types": ["jest"]
-  },
   "include": [
     "src",
-    "tests",
-    "setupTests.ts",
-    "cypress"
-  ]
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx",
+    "cypress.config.ts",
+    "jest.config.ts",
+    "vitest.config.ts"
+  ],
+  "exclude": ["node_modules", "dist"]
 }
