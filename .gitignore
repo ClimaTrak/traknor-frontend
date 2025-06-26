@@ -1,3 +1,20 @@
+# Dependências locais e Git
+node_modules
+**/node_modules
+.git
+.gitignore
+
+# Artefatos de build e logs
+dist
+build
+*.log
+
+# Configurações de IDE e arquivos de ambiente
+.vscode
+.idea
+.env
+.env.*
+
 # Logs
 logs
 *.log

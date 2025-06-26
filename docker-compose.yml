@@ -1,12 +1,13 @@
-# docker-compose.yml (VERSÃO INCORRETA)
-
 services:
   frontend:
     build:
-      context: . # <--- Este é o problema
-      dockerfile: ./frontend/Dockerfile
-    ports:
-      - "80:80"
-    # ... resto da configuração
+      context: .               # envia TODO o monorepo ao daemon
+      dockerfile: Dockerfile   # o Dockerfile de 4 estágios
+      target: runner            # vamos gerar a imagem final “runner”
+      args:
+        VITE_API_URL: ${BACKEND_URL:-http://api:8000}
     environment:
-      - VITE_BACKEND_URL=${BACKEND_URL} # 3. (Importante) Garante que a variável seja lida pelo Vite
+      - VITE_API_URL=${BACKEND_URL:-http://api:8000}
+    ports:
+      - "3000:80"
+    restart: unless-stopped
