@@ -1,13 +1,9 @@
 services:
   frontend:
     build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        # Passa a variável para o ARG VITE_API_URL no Dockerfile
-        VITE_API_URL: ${BACKEND_URL:-/api} 
+      context: ./traknor-frontend/frontend  # 1. Define o novo contexto de build
+      dockerfile: Dockerfile             # 2. Aponta para o Dockerfile dentro do contexto
     ports:
-      - "3000:80"
+      - "8000:8000"
     environment:
-      # Garante que a variável também esteja disponível se necessário
-      - VITE_API_URL=${BACKEND_URL:-/api}
+      - VITE_BACKEND_URL=${BACKEND_URL} # 3. (Importante) Garante que a variável seja lida pelo Vite
