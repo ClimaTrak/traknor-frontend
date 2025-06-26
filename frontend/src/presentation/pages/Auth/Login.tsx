@@ -41,8 +41,16 @@ const Login = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack>
-        <TextInput label="Usuário" {...register('username')} error={errors.username?.message} />
-        <PasswordInput label="Senha" {...register('password')} error={errors.password?.message} />
+        <TextInput
+          label="Usuário"
+          {...register('username')}
+          error={errors.username?.message}
+        />
+        <PasswordInput
+          label="Senha"
+          {...register('password')}
+          error={errors.password?.message}
+        />
         <Button type="submit" disabled={loading}>
           {loading && <Loader size="xs" />} Entrar
         </Button>

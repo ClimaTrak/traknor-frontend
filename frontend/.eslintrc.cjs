@@ -1,36 +1,48 @@
+// frontend/.eslintrc.cjs
 module.exports = {
-  parser: '@typescript-eslint/parser',
+  root: true,
+  parser: "@typescript-eslint/parser",
   parserOptions: {
-    // project: "./tsconfig.eslint.json", ← comente isso temporariamente
+    project: "./tsconfig.eslint.json",
     tsconfigRootDir: __dirname,
-    sourceType: "module"
+    sourceType: "module",
+    ecmaVersion: 2020,
+    ecmaFeatures: { jsx: true },
   },
-  extends: [
-    'airbnb-typescript',
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:jsx-a11y/recommended',
-    'plugin:import/errors',
-    'plugin:import/warnings',
-    'plugin:import/typescript',
-    'plugin:prettier/recommended',
-  ],
   plugins: [
-    '@typescript-eslint',
-    'react',
-    'jsx-a11y',
-    'react-hooks',
-    'prettier',
+    "@typescript-eslint",
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "import",
+    "prettier"
+  ],
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "plugin:prettier/recommended"
   ],
   settings: {
-    react: {
-      version: 'detect',
-    },
-    'import/resolver': {
-      typescript: {},
-    },
+    react: { version: "detect" },
+    "import/resolver": { typescript: {} },
   },
+  ignorePatterns: [
+    "dist/",
+    "node_modules/",
+    ".vite/",
+    ".ignored_node_modules/",
+    ".storybook/",
+    "*.config.ts",
+    "vite.config.ts",
+  ],
   rules: {
-    'react/react-in-jsx-scope': 'off',
+    "react/react-in-jsx-scope": "off",
+    // outras regras personalizadas...
   },
 };

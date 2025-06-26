@@ -17,10 +17,22 @@ import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import { useAuthStore } from '../../../stores/useAuthStore';
 
 const baseLinks = [
-  { label: 'Visão Geral', to: '/app/overview', roles: ['admin', 'manager', 'technician'] },
-  { label: 'Equipamentos', to: '/app/equipamentos', roles: ['admin', 'manager', 'technician'] },
+  {
+    label: 'Visão Geral',
+    to: '/app/overview',
+    roles: ['admin', 'manager', 'technician'],
+  },
+  {
+    label: 'Equipamentos',
+    to: '/app/equipamentos',
+    roles: ['admin', 'manager', 'technician'],
+  },
   { label: 'Usuários', to: '/app/usuarios', roles: ['admin'] },
-  { label: 'Ordens de Serviço', to: '/app/work-orders', roles: ['admin', 'technician'] },
+  {
+    label: 'Ordens de Serviço',
+    to: '/app/work-orders',
+    roles: ['admin', 'technician'],
+  },
   { label: 'Planos', to: '/app/plans', roles: ['admin'] },
   { label: 'Métricas', to: '/app/metrics', roles: ['admin'] },
   { label: 'Relatórios', to: '/app/reports', roles: ['admin', 'manager'] },

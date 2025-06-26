@@ -2,7 +2,9 @@ import { ReactNode } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 
-interface Props { children: ReactNode; }
+interface Props {
+  children: ReactNode;
+}
 
 const PrivateRoute = ({ children }: Props) => {
   const { access } = useAuth();

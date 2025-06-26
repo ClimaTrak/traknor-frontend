@@ -1,8 +1,22 @@
 import { Equipment, EquipmentInput } from '../domain/equipment';
 
 let equipments: Equipment[] = [
-  { id: 1, name: 'Split 9000', model: 'LG', tag: 'HVAC-01', location: 'Sala 1', btus: 9000 },
-  { id: 2, name: 'Split 12000', model: 'Samsung', tag: 'HVAC-02', location: 'Sala 2', btus: 12000 },
+  {
+    id: 1,
+    name: 'Split 9000',
+    model: 'LG',
+    tag: 'HVAC-01',
+    location: 'Sala 1',
+    btus: 9000,
+  },
+  {
+    id: 2,
+    name: 'Split 12000',
+    model: 'Samsung',
+    tag: 'HVAC-02',
+    location: 'Sala 2',
+    btus: 12000,
+  },
 ];
 
 const delay = () => new Promise((r) => setTimeout(r, 100));

@@ -11,18 +11,21 @@ export const useEquipments = () => {
 
   const create = useMutation({
     mutationFn: (data: EquipmentInput) => EquipmentService.create(data),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['equipments'] }),
+    onSuccess: () =>
+      queryClient.invalidateQueries({ queryKey: ['equipments'] }),
   });
 
   const update = useMutation({
     mutationFn: ({ id, data }: { id: number; data: EquipmentInput }) =>
       EquipmentService.update(id, data),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['equipments'] }),
+    onSuccess: () =>
+      queryClient.invalidateQueries({ queryKey: ['equipments'] }),
   });
 
   const remove = useMutation({
     mutationFn: (id: number) => EquipmentService.remove(id),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['equipments'] }),
+    onSuccess: () =>
+      queryClient.invalidateQueries({ queryKey: ['equipments'] }),
   });
 
   return { ...listQuery, create, update, remove };

@@ -13,7 +13,10 @@ const UsuariosPage = () => {
 
   const handleSubmit = (form: UserFormData) => {
     if (editingId) {
-      update.mutate({ id: editingId, data: form }, { onSuccess: () => setOpened(false) });
+      update.mutate(
+        { id: editingId, data: form },
+        { onSuccess: () => setOpened(false) },
+      );
     } else {
       create.mutate(form, { onSuccess: () => setOpened(false) });
     }
@@ -23,7 +26,14 @@ const UsuariosPage = () => {
     <Stack p="lg">
       <Group justify="space-between" mb="md">
         <Title order={1}>Usuários</Title>
-        <Button onClick={() => { setEditingId(null); setOpened(true); }}>Novo</Button>
+        <Button
+          onClick={() => {
+            setEditingId(null);
+            setOpened(true);
+          }}
+        >
+          Novo
+        </Button>
       </Group>
       {isLoading && <Text>Carregando...</Text>}
       {data && (
@@ -46,7 +56,13 @@ const UsuariosPage = () => {
                 <Table.Td>{u.active ? 'Ativo' : 'Inativo'}</Table.Td>
                 <Table.Td>
                   <Group gap="xs" justify="flex-end">
-                    <Button size="xs" onClick={() => { setEditingId(u.id); setOpened(true); }}>
+                    <Button
+                      size="xs"
+                      onClick={() => {
+                        setEditingId(u.id);
+                        setOpened(true);
+                      }}
+                    >
                       Editar
                     </Button>
                     <Button

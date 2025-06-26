@@ -11,7 +11,12 @@ interface Props {
   onSubmit: (data: EquipmentInput) => void;
 }
 
-const EquipmentFormModal = ({ opened, onClose, initialValues, onSubmit }: Props) => {
+const EquipmentFormModal = ({
+  opened,
+  onClose,
+  initialValues,
+  onSubmit,
+}: Props) => {
   const {
     register,
     handleSubmit,
@@ -24,11 +29,31 @@ const EquipmentFormModal = ({ opened, onClose, initialValues, onSubmit }: Props)
   return (
     <Modal opened={opened} onClose={onClose} title="Equipamento">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <TextInput label="Nome" {...register('nome')} error={errors.nome?.message} />
-        <TextInput label="Categoria" {...register('categoria')} error={errors.categoria?.message} />
-        <TextInput label="Fabricante" {...register('fabricante')} error={errors.fabricante?.message} />
-        <TextInput label="Número de Série" {...register('numeroSerie')} error={errors.numeroSerie?.message} />
-        <TextInput label="Status" {...register('status')} error={errors.status?.message} />
+        <TextInput
+          label="Nome"
+          {...register('nome')}
+          error={errors.nome?.message}
+        />
+        <TextInput
+          label="Categoria"
+          {...register('categoria')}
+          error={errors.categoria?.message}
+        />
+        <TextInput
+          label="Fabricante"
+          {...register('fabricante')}
+          error={errors.fabricante?.message}
+        />
+        <TextInput
+          label="Número de Série"
+          {...register('numeroSerie')}
+          error={errors.numeroSerie?.message}
+        />
+        <TextInput
+          label="Status"
+          {...register('status')}
+          error={errors.status?.message}
+        />
         <Group justify="flex-end" mt="md">
           <Button variant="outline" onClick={onClose} type="button">
             Cancelar

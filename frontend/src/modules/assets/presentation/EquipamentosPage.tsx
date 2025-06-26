@@ -1,13 +1,5 @@
 import { useState } from 'react';
-import {
-  Button,
-  Group,
-  Modal,
-  Stack,
-  Table,
-  Text,
-  Title,
-} from '@mantine/core';
+import { Button, Group, Modal, Stack, Table, Text, Title } from '@mantine/core';
 import { useEquipments } from '../application/useEquipments';
 import EquipamentoForm from './EquipamentoForm';
 import { EquipmentFormData } from '../schemas/equipmentSchema';
@@ -21,7 +13,10 @@ const EquipamentosPage = () => {
 
   const handleSubmit = (form: EquipmentFormData) => {
     if (editingId) {
-      update.mutate({ id: editingId, data: form }, { onSuccess: () => setOpened(false) });
+      update.mutate(
+        { id: editingId, data: form },
+        { onSuccess: () => setOpened(false) },
+      );
     } else {
       create.mutate(form, { onSuccess: () => setOpened(false) });
     }
@@ -31,7 +26,14 @@ const EquipamentosPage = () => {
     <Stack p="lg">
       <Group justify="space-between" mb="md">
         <Title order={1}>Equipamentos</Title>
-        <Button onClick={() => { setEditingId(null); setOpened(true); }}>Novo</Button>
+        <Button
+          onClick={() => {
+            setEditingId(null);
+            setOpened(true);
+          }}
+        >
+          Novo
+        </Button>
       </Group>
       {isLoading && <Text>Carregando...</Text>}
       {data && (
@@ -56,7 +58,13 @@ const EquipamentosPage = () => {
                 <Table.Td>{eq.btus}</Table.Td>
                 <Table.Td>
                   <Group gap="xs" justify="flex-end">
-                    <Button size="xs" onClick={() => { setEditingId(eq.id); setOpened(true); }}>
+                    <Button
+                      size="xs"
+                      onClick={() => {
+                        setEditingId(eq.id);
+                        setOpened(true);
+                      }}
+                    >
                       Editar
                     </Button>
                     <Button
@@ -73,7 +81,11 @@ const EquipamentosPage = () => {
           </Table.Tbody>
         </Table>
       )}
-      <Modal opened={opened} onClose={() => setOpened(false)} title="Equipamento">
+      <Modal
+        opened={opened}
+        onClose={() => setOpened(false)}
+        title="Equipamento"
+      >
         <EquipamentoForm
           initialValues={editingItem ?? undefined}
           onSubmit={handleSubmit}

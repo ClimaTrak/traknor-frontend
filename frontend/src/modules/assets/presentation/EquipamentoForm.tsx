@@ -21,8 +21,16 @@ const EquipamentoForm = ({ initialValues, onSubmit, onCancel }: Props) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
-      <TextInput label="Nome" {...register('name')} error={errors.name?.message} />
-      <TextInput label="Modelo" {...register('model')} error={errors.model?.message} />
+      <TextInput
+        label="Nome"
+        {...register('name')}
+        error={errors.name?.message}
+      />
+      <TextInput
+        label="Modelo"
+        {...register('model')}
+        error={errors.model?.message}
+      />
       <TextInput label="TAG" {...register('tag')} error={errors.tag?.message} />
       <TextInput
         label="Localização"

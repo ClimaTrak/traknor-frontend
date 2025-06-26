@@ -5,12 +5,18 @@ import {
   useState,
   type ReactNode,
 } from 'react';
-import { login as apiLogin, logout as apiLogout } from '@/infrastructure/api/auth';
+import {
+  login as apiLogin,
+  logout as apiLogout,
+} from '@/infrastructure/api/auth';
 import { tokenStore } from '@/utils/tokenStorage';
 import { roleStorage } from '@/utils/roleStorage';
 import type { Role } from '@/domain/auth';
 
-interface Credentials { username: string; password: string; }
+interface Credentials {
+  username: string;
+  password: string;
+}
 
 interface AuthContextValue {
   access: string | null;

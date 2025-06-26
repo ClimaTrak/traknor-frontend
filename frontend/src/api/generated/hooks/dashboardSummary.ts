@@ -8,11 +8,15 @@ export interface DashboardSummary {
   closed_os: number;
 }
 
-export const useGetApiDashboardSummary = (options?: { refetchInterval?: number }) =>
+export const useGetApiDashboardSummary = (options?: {
+  refetchInterval?: number;
+}) =>
   useQuery({
     queryKey: ['dashboard-summary'],
     queryFn: async () => {
-      const { data } = await client.get<DashboardSummary>('/api/dashboard/summary/');
+      const { data } = await client.get<DashboardSummary>(
+        '/api/dashboard/summary/',
+      );
       return data;
     },
     refetchInterval: options?.refetchInterval,

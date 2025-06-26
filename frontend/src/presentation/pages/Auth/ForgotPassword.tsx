@@ -10,11 +10,22 @@ const ForgotPassword = () => {
   };
 
   return (
-    <form onSubmit={(e) => { e.preventDefault(); onSubmit(); }}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit();
+      }}
+    >
       <Stack>
-        <TextInput label="E-mail" value={email} onChange={(e) => setEmail(e.currentTarget.value)} />
+        <TextInput
+          label="E-mail"
+          value={email}
+          onChange={(e) => setEmail(e.currentTarget.value)}
+        />
         <Button type="submit">Enviar</Button>
-        <Link to="/login" className="text-sm text-blue-600">Voltar para Login</Link>
+        <Link to="/login" className="text-sm text-blue-600">
+          Voltar para Login
+        </Link>
       </Stack>
     </form>
   );
