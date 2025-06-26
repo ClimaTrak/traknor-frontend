@@ -1,9 +1,12 @@
+# docker-compose.yml (VERSÃO INCORRETA)
+
 services:
   frontend:
     build:
-      context: ./traknor-frontend/frontend  # 1. Define o novo contexto de build
-      dockerfile: Dockerfile             # 2. Aponta para o Dockerfile dentro do contexto
+      context: . # <--- Este é o problema
+      dockerfile: ./frontend/Dockerfile
     ports:
-      - "8000:8000"
+      - "80:80"
+    # ... resto da configuração
     environment:
       - VITE_BACKEND_URL=${BACKEND_URL} # 3. (Importante) Garante que a variável seja lida pelo Vite
