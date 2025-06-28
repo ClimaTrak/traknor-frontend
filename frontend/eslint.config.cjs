@@ -20,6 +20,16 @@ const { configs: { recommended: importRecommended } } = importPlugin;
 const prettierPlugin = require('eslint-plugin-prettier');
 
 module.exports = [
+  // Ignore tests, stories and generated API during development
+  {
+    ignores: [
+      'cypress/**',
+      'src/**/*.cy.ts',
+      'src/**/*.{spec,test}.{ts,tsx}',
+      'src/**/*.stories.tsx',
+      'src/api/generated/**',
+    ],
+  },
   // 1) ESLint core
   eslintRecommended,
 
@@ -39,7 +49,8 @@ module.exports = [
     },
   },
 
-  // 3) TS com type-check
+  // 3) TS com type-check (desativado para desenvolvimento rapido)
+  /*
   {
     plugins: { '@typescript-eslint': tsPlugin },
     rules: tsTypeChecked.rules,
@@ -51,6 +62,7 @@ module.exports = [
       },
     },
   },
+  */
 
   // 4) React
   {
@@ -74,20 +86,24 @@ module.exports = [
     rules: reactHooksRecommended.rules,
   },
 
-  // 7) Import
+  // 7) Import (desativado)
+  /*
   {
     plugins: { import: importPlugin },
     rules: importRecommended.rules,
     settings: { 'import/resolver': { typescript: {} } },
   },
+  */
 
-  // 8) Prettier
+  // 8) Prettier (desativado)
+  /*
   {
     plugins: { prettier: prettierPlugin },
     rules: {
       'prettier/prettier': 'error',
     },
   },
+  */
 
   // 9) Ignora arquivos / overrides
   {

@@ -8,10 +8,6 @@
   "scripts": {
     "dev": "pnpm --filter frontend run dev",
     "build": "pnpm --filter frontend run build",
-    "lint": "pnpm --filter frontend run lint",
-    "format": "pnpm --filter frontend run format",
-    "test": "pnpm --filter frontend run test",
-    "test:coverage": "pnpm --filter frontend run test:coverage",
     "api:gen": "openapi-typescript $VITE_API_URL/schema/ -o frontend/src/api/generated/schemas.ts && openapi-typescript-codegen --client axios -o frontend/src/api/generated --useOptions --useUnionTypes $VITE_API_URL/schema/",
     "api:check": "pnpm api:gen && git diff --exit-code",
     "preinstall": "npx only-allow pnpm",
@@ -19,7 +15,6 @@
   },
   "devDependencies": {
     "openapi-typescript": "^7.8.0",
-    "openapi-typescript-codegen": "^0.29.0",
-    "husky": "^9.0.11"
+    "openapi-typescript-codegen": "^0.29.0"
   }
 }

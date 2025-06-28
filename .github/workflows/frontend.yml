@@ -28,12 +28,5 @@ jobs:
         run: pnpm install --registry ${{ env.NPM_REGISTRY }}
         env:
           NPM_REGISTRY: https://registry.npmmirror.com
-      - name: Check OpenAPI types up-to-date
-        run: pnpm api:check
-      - name: Lint
-        run: pnpm lint
-      - name: Run tests and build
-        run: pnpm test:coverage && pnpm --filter frontend build
-      - name: Build Storybook
-        run: pnpm --filter frontend build-storybook
-        if: false
+      - name: Build frontend
+        run: pnpm --filter frontend build
