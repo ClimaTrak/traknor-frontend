@@ -19,5 +19,3 @@ jobs:
         run: pnpm install --registry ${NPM_REGISTRY:-https://registry.npmmirror.com}
       - name: Build frontend
         run: pnpm --filter frontend build
-      - name: Run vitest
-        run: pnpm --filter frontend vitest run

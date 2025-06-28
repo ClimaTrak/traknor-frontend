@@ -1,173 +1,19 @@
-# ClimaTrak Frontend
+# Development Quick Start
 
-This repository contains the React front-end for ClimaTrak.
-
-## Development
-
-Install dependencies and start the dev server from the repository root:
-
+## Frontend
 ```bash
 pnpm install
 pnpm dev
-# Se preferir manter o arquivo em `frontend/vite.config.ts`, rode:
-# vite --config frontend/vite.config.ts
 ```
 
-The application will be available at http://localhost:5173 showing **Hello ClimaTrak**.
-
-For a detailed step-by-step guide on running the project locally, see [docs/rodando-localmente.md](docs/rodando-localmente.md).
-
-## ▶️ Rodando localmente
-
-### Pré-requisitos
-
- - Node 20 via [nvm](https://github.com/nvm-sh/nvm) (Linux/Mac) ou `pnpm env` (Windows)
-- pnpm
-
-### Passo a passo
-
+Optional Storybook:
 ```bash
-cp .env.example .env
-./setup.sh        # use --mirror se sua rede bloquear o npm
-pnpm dev
+pnpm run storybook
 ```
 
-Abra `http://localhost:5173` e verifique se a home aparece sem erros.
-
-### Problemas comuns
-
-| Problema | Solução |
-| -------- | ------- |
-| Registry bloqueado | Execute `./setup.sh --mirror` |
-| Erro CORS nas chamadas | Garanta que o backend em `http://localhost:8000` está rodando |
-| Porta 5173 ocupada | Defina `PORT=5174` no `.env` |
-| Backend inativo | Rode `docker compose -f docker-compose.dev.yml up -d backend` |
-
-## Problemas de Registry
-
-Se sua rede bloquear `registry.npmjs.org`, defina:
-
+## Backend (if present)
 ```bash
-export NPM_REGISTRY=https://registry.npmmirror.com
-pnpm install
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
 ```
-
-## Rodando tudo em Docker
-
-Para subir frontend e backend de exemplo com um único comando, execute:
-
-```bash
-docker compose up --build
-```
-
-A aplicação ficará acessível em `http://localhost:3000`. O Nginx do container
-redireciona requisições `\*/api` para o serviço `backend` na porta 8000.
-
-### Rodando somente o frontend
-
-Caso possua um backend remoto disponível, rode apenas o serviço de frontend apontando para ele:
-
-```bash
-BACKEND_URL=https://api-stage.climatrak.com docker compose up -d frontend
-```
-
-
-### Formatting and Linting
-
-For instructions on setting up the project in Visual Studio Code, see [docs/setup-vscode.md](docs/setup-vscode.md).
-
-Run the linter and formatter:
-
-```bash
-pnpm lint
-pnpm format
-pnpm format:check
-```
-
-## Rodando Testes
-
-Execute a suíte de testes e gere o relatório de cobertura com:
-
-```bash
-pnpm test:coverage
-```
-
-Commits e builds falham se a cobertura ficar abaixo de 80%.
-
-## Camada de API & Auth
-
-Todas as chamadas HTTP utilizam a instância `api` configurada em `src/infrastructure/api/axios.ts`. Antes de consumir, defina `VITE_API_URL` no `.env` apontando para o backend.
-
-Exemplo de login e chamada autenticada:
-
-```ts
-import { login } from "@/infrastructure/api/auth";
-import { api } from "@/infrastructure/api/axios";
-
-await login({ username: "alice", password: "123" });
-const dados = await api.get("/api/dashboard/");
-```
-
-Tokens são salvos em `localStorage` e renovados automaticamente.
-
-### Autenticação no Frontend
-
-As telas **Login** (`/login`) e **Recuperar Senha** (`/password-reset`) utilizam componentes da Mantine.
-Após autenticar, a aplicação grava `access`, `refresh` e `role` em `localStorage`.
-O redirecionamento pós-login considera o `role` do usuário:
-
-| Role     | Rota inicial      |
-| -------- | ----------------- |
-| `ADMIN`  | `/dashboard`      |
-| `TECH`   | `/work-orders`    |
-| `CLIENT` | `/work-orders/my` |
-
-Rotas privadas usam `<PrivateRoute>` para exigir token válido.
-
-### Sincronizar tipos da API
-
-- `pnpm api:gen` → gera/atualiza tipos e hooks
-- `pnpm api:check` → gera e falha se houver diferenças (usado no CI e pre-commit)
-
-## Layout & Tema
-
-- Cores primárias: #002d2b | #00968f | #00fff4
-- Componente AppShell em `src/components/Layout`
-
-## Equipamentos
-
-A tela `/app/equipamentos` permite gerenciar a lista de equipamentos.
-Ela utiliza tabela paginada, formulário em modal e importação de CSV.
-Os dados são obtidos via hooks gerados em `src/api/generated/hooks/equipment.ts`.
-
-## Ordens de Serviço
-
-A partir da rota `/app/work-orders` é possível visualizar uma caixa de entrada de OS e o detalhe da seleção ao lado. As ações de mudança de status são carregadas dinamicamente e requerem permissão conforme o papel do usuário.
-
-## Dashboard KPIs
-
-A página `/dashboard` exibe indicadores-chave de manutenção (MTTR, MTBF e contagem de ordens de serviço) em cartões visuais. Os valores são atualizados automaticamente a cada 60 segundos utilizando **@tanstack/react-query**.
-
-## Relatórios
-
-A página `/reports` permite gerar relatórios em PDF ou Excel dos equipamentos ou ordens de serviço. Selecione o tipo e formato desejados e clique em **Download** para iniciar a geração. Um toast informa o andamento e o arquivo é salvo automaticamente.
-
-## Controle de Acesso
-
-As rotas e ações são protegidas conforme o papel do usuário (`admin`, `manager`, `technician`). Utilize o componente `<RoleRoute>` para restringir páginas:
-
-```tsx
-<Route element={<RoleRoute allowedRoles={['admin']} />}>
-  <Route path="/usuarios" element={<UsuariosPage />} />
-</Route>
-```
-
-Para verificar permissões em componentes:
-
-```tsx
-{isAuthorized(['admin']) && <ActionIcon aria-label="Excluir" />}
-```
-
-## Performance
-
-Benchmarks rápidos com `pnpm perf` mostram redução de re-renderizações e bundle menor após a adoção de `React.lazy` e memoização.
