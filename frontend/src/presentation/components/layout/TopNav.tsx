@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
-  Header,
+  AppShell,
   Group,
   Burger,
   Drawer,
@@ -63,7 +63,7 @@ const TopNav = () => {
   ));
 
   return (
-    <Header height={64} className="bg-[#002d2b] text-gray-200">
+    <AppShell.Header height={64} className="bg-[#002d2b] text-gray-200">
       <Group justify="space-between" h="100%" px="md">
         <Group gap="sm">
           {isMobile && (
@@ -106,7 +106,7 @@ const TopNav = () => {
       <Drawer opened={opened} onClose={close} padding="md" size="xs">
         <Stack>{items}</Stack>
       </Drawer>
-    </Header>
+    </AppShell.Header>
   );
 };
 
