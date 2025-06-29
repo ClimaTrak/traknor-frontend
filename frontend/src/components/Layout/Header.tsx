@@ -2,7 +2,7 @@ import {
   ActionIcon,
   Burger,
   Group,
-  Header as MantineHeader,
+  AppShell,
   Title,
 } from '@mantine/core';
 import {
@@ -20,7 +20,7 @@ interface Props {
 }
 
 const Header = ({ opened, toggle, colorScheme, toggleColorScheme }: Props) => (
-  <MantineHeader height={64} px="md">
+  <AppShell.Header height={64} px="md">
     <Group h="100%" justify="space-between">
       <Group>
         <Burger
@@ -50,7 +50,7 @@ const Header = ({ opened, toggle, colorScheme, toggleColorScheme }: Props) => (
         </ActionIcon>
       </Group>
     </Group>
-  </MantineHeader>
+  </AppShell.Header>
 );
 
 export default Header;

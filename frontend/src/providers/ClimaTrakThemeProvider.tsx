@@ -1,7 +1,6 @@
 import { ReactNode, useState, useEffect } from 'react';
 import {
   MantineProvider,
-  ColorSchemeProvider,
   ColorScheme,
   createTheme,
 } from '@mantine/core';
@@ -38,19 +37,14 @@ const ClimaTrakThemeProvider = ({ children }: Props) => {
     });
 
   return (
-    <ColorSchemeProvider
+    <MantineProvider
+      theme={theme}
+      withGlobalStyles
+      withNormalizeCSS
       colorScheme={colorScheme}
-      toggleColorScheme={toggleColorScheme}
     >
-      <MantineProvider
-        theme={theme}
-        withGlobalStyles
-        withNormalizeCSS
-        colorScheme={colorScheme}
-      >
-        {children}
-      </MantineProvider>
-    </ColorSchemeProvider>
+      {children}
+    </MantineProvider>
   );
 };
 

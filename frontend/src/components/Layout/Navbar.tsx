@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Navbar as MantineNavbar, Stack } from '@mantine/core';
+import { AppShell, Stack } from '@mantine/core';
 import {
   IconHome2,
   IconDeviceDesktopAnalytics,
@@ -23,8 +23,8 @@ const menu = [
 ];
 
 const Navbar = () => (
-  <MantineNavbar width={{ base: 200 }} p="md">
-    <MantineNavbar.Section grow component={Stack} gap="xs">
+  <AppShell.Navbar width={{ base: 200 }} p="md">
+    <AppShell.Navbar.Section grow component={Stack} gap="xs">
       {menu.map((item) => (
         <NavLink
           key={item.to}
@@ -40,8 +40,8 @@ const Navbar = () => (
           {item.label}
         </NavLink>
       ))}
-    </MantineNavbar.Section>
-  </MantineNavbar>
+    </AppShell.Navbar.Section>
+  </AppShell.Navbar>
 );
 
 export default Navbar;
