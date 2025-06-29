@@ -1,7 +1,7 @@
 services:
   frontend:
     build:
-      context: .               # envia TODO o monorepo ao daemon
+      context: .       # envia TODO o monorepo ao daemon
       dockerfile: Dockerfile   # o Dockerfile de 4 estágios
       target: runner            # vamos gerar a imagem final “runner”
       args:

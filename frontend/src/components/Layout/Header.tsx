@@ -10,7 +10,7 @@ import {
   IconMoonStars,
   IconSun,
   IconUser,
-} from '@mantine/icons-react';
+} from '@tabler/icons-react';
 
 interface Props {
   opened: boolean;

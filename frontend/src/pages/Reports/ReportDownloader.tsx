@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Stack, Button, Select } from '@mantine/core';
-import { IconDownload } from '@mantine/icons-react';
+import { IconDownload } from '@tabler/icons-react';
 import type { ReportType, ReportFormat } from '@/modules/reports/domain/report';
 import useDownloadReport from '@/modules/reports/application/useDownloadReport';
 

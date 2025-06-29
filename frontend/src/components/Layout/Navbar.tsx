@@ -9,7 +9,7 @@ import {
   IconUsers,
   IconReportAnalytics,
   IconGauge,
-} from '@mantine/icons-react';
+} from '@tabler/icons-react';
 
 const menu = [
   { label: 'Visão Geral', icon: IconGauge, to: '/' },

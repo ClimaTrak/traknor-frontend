@@ -12,7 +12,8 @@ WORKDIR /app
 COPY pnpm-workspace.yaml package.json pnpm-lock.yaml vite.config.ts tsconfig.json ./
 
 # 2.2) Copia o código-fonte do frontend
-COPY frontend ./frontend
+COPY . .        
+
 
 # 2.3) Instala tudo, com cache BuildKit
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \

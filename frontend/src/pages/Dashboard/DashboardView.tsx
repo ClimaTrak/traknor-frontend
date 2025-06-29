@@ -4,7 +4,7 @@ import {
   IconClockHour4,
   IconListCheck,
   IconListSearch,
-} from '@mantine/icons-react';
+} from '@tabler/icons-react';
 import KpiCard from './components/KpiCard';
 import useDashboardSummary from './components/useDashboardSummary';
 
