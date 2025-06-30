@@ -43,3 +43,5 @@ export const Navbar = () => (
     </AppShell.Navbar.Section>
   </AppShell.Navbar>
 );
+
+export default Navbar;

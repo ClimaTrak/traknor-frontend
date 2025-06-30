@@ -5,7 +5,7 @@ import {
 } from '@mantine/core';
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
-import { Navbar } from './Navbar';
+import Navbar from './Navbar';
 
 const AppShell = () => {
   const [opened, { toggle }] = useDisclosure();
