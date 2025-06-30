@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import { Loader } from '@mantine/core';
-import AppShell from './components/Layout/AppShell';
+import { AppShell } from './components';
 const StubPage = lazy(() => import('./pages/StubPage'));
 const DashboardView = lazy(() => import('./pages/Dashboard/DashboardView'));
 const ReportDownloader = lazy(() => import('./pages/Reports/ReportDownloader'));
