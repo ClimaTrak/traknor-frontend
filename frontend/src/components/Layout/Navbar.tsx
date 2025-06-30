@@ -22,7 +22,7 @@ const menu = [
   { label: 'Relatórios', icon: IconReportAnalytics, to: '/reports' },
 ];
 
-const Navbar = () => (
+export const Navbar = () => (
   <AppShell.Navbar width={{ base: 200 }} p="md">
     <AppShell.Navbar.Section grow component={Stack} gap="xs">
       {menu.map((item) => (
@@ -43,5 +43,3 @@ const Navbar = () => (
     </AppShell.Navbar.Section>
   </AppShell.Navbar>
 );
-
-export default Navbar;
