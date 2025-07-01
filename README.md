@@ -22,6 +22,11 @@ pnpm build
 ```
 
 ## Backend (if present)
+Crie e ative um ambiente virtual Python:
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
 ```bash
 pip install -r requirements.txt
 python manage.py migrate
