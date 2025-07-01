@@ -15,7 +15,7 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 const Login = () => {
-  const { login, role } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
   const {
     register,
@@ -29,8 +29,8 @@ const Login = () => {
     setLoading(true);
     setError(null);
     try {
-      await login(data);
-      navigate(getHomeByRole(role), { replace: true });
+      const userRole = await login(data);
+      navigate(getHomeByRole(userRole), { replace: true });
     } catch (err: any) {
       setError('Credenciais inválidas');
     } finally {
