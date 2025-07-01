@@ -1,7 +1,7 @@
 import { useState, useMemo, memo, useCallback } from 'react';
 import { Button, Group, Loader, Stack, ActionIcon } from '@mantine/core';
 import { IconTrash } from '@tabler/icons-react';
-import { MantineDataTable } from '@mantine/datatable';
+import { DataTable as MantineDataTable } from 'mantine-datatable';
 import {
   useGetApiEquipment,
   useDeleteApiEquipmentById,
