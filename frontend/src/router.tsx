@@ -11,8 +11,10 @@ const DashboardView = lazy(() => import('./pages/Dashboard/DashboardView'));
 const ReportDownloader = lazy(() => import('./pages/Reports/ReportDownloader'));
 import RoleRoute from './router/RoleRoute';
 const Forbidden = lazy(() => import('./pages/Error/Forbidden'));
+const Login = lazy(() => import('./presentation/pages/Auth/Login'));
 
 const routes: RouteObject[] = [
+  { path: 'login', element: <Login /> },
   {
     path: '/',
     element: <AppShell />,
