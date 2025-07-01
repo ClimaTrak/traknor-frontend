@@ -1,6 +1,6 @@
 import { useState, memo, useMemo, useCallback } from 'react';
 import { Grid, Loader, Center, Stack, TextInput, Select } from '@mantine/core';
-import { MantineDataTable } from '@mantine/datatable';
+import { DataTable as MantineDataTable } from 'mantine-datatable';
 import { useWorkOrders } from '@/modules/workorders/application/useWorkOrders';
 import type { WorkOrder } from '@/modules/workorders/domain/workorder';
 import WorkOrderDetail from './WorkOrderDetail';
