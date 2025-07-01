@@ -3,7 +3,7 @@ info:
   title: Reports API
   version: 1.0.0
 paths:
-  /api/reports/:
+  /api/reports:
     get:
       parameters:
         - in: query

@@ -22,7 +22,7 @@ interface AuthContextValue {
   access: string | null;
   refresh: string | null;
   role: Role | null;
-  login: (c: Credentials) => Promise<void>;
+  login: (c: Credentials) => Promise<Role>;
   logout: () => void;
 }
 
@@ -33,11 +33,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [refresh, setRefresh] = useState<string | null>(tokenStore.refresh);
   const [role, setRole] = useState<Role | null>(roleStorage.role);
 
-  const login = useCallback(async (cred: Credentials) => {
+  const login = useCallback(async (cred: Credentials): Promise<Role> => {
     const { access: a, refresh: r, user } = await apiLogin(cred);
     setAccess(a);
     setRefresh(r);
     setRole(user.role);
+    return user.role;
   }, []);
 
   const logout = useCallback(() => {
