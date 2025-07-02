@@ -5,8 +5,15 @@ import {
   useTransitionStatus,
 } from '@/modules/workorders/application/useWorkOrders';
 
+/**
+ * Botões responsáveis por executar as transições de status da OS.
+ */
+
+/** Propriedades do componente de transição de status */
 interface Props {
+  /** Identificador da OS */
   id: number;
+  /** Papel do usuário atual */
   role: string | null;
 }
 
@@ -16,6 +23,9 @@ const StatusTransitionButtons = ({ id, role }: Props) => {
 
   if (!choices) return null;
 
+  /**
+   * Verifica se o usuário atual pode executar a transição informada.
+   */
   const allowed = (value: string) => {
     if (role === 'admin') return true;
     if (role === 'technician' && value === 'DONE') return true;

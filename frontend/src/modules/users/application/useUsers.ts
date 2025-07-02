@@ -2,7 +2,12 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import UserService from '../infrastructure/UserService';
 import { UserInput } from '../domain/user';
 
-// Hook que centraliza as operações com usuários usando React Query
+/**
+ * Hook que centraliza as operações de consulta e mutação de usuários.
+ *
+ * Utiliza React Query para gerenciar cache e estados de carregamento de forma
+ * consistente em toda a aplicação.
+ */
 
 export const useUsers = () => {
   const queryClient = useQueryClient();

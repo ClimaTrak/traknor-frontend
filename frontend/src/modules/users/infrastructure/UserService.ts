@@ -1,5 +1,13 @@
 import { User, UserInput } from '../domain/user';
 
+/**
+ * Serviço responsável por manipular usuários na camada de infraestrutura.
+ *
+ * Neste exemplo os dados são mantidos somente em memória, simulando a
+ * comunicação com uma API ou banco de dados real. Cada método possui um pequeno
+ * atraso artificial para imitar chamadas assíncronas.
+ */
+
 // Base de usuários mantida apenas em memória para fins de demonstração
 let users: User[] = [
   {
@@ -25,15 +33,24 @@ let users: User[] = [
   },
 ];
 
+// Simula latência de rede de 100ms
 const delay = () => new Promise((r) => setTimeout(r, 100));
 
+/**
+ * Conjunto de operações disponíveis para lidar com usuários.
+ */
 const UserService = {
-  // Retorna a lista completa de usuários
+  /**
+   * Retorna a lista completa de usuários.
+   */
   async list(): Promise<User[]> {
     await delay();
     return users;
   },
-  // Cria um novo usuário na base local
+  /**
+   * Cria um novo usuário na base local.
+   * Lança erro caso o e-mail informado já esteja em uso.
+   */
   async create(data: UserInput): Promise<User> {
     await delay();
     const exists = users.some((u) => u.email === data.email);
@@ -47,7 +64,10 @@ const UserService = {
     users.push(newUser);
     return newUser;
   },
-  // Atualiza dados de um usuário existente
+  /**
+   * Atualiza dados de um usuário existente.
+   * Também valida se o e-mail informado está disponível.
+   */
   async update(id: number, data: Partial<UserInput>): Promise<User> {
     await delay();
     const idx = users.findIndex((u) => u.id === id);
@@ -64,7 +84,9 @@ const UserService = {
     users[idx] = { ...users[idx], ...data } as User;
     return users[idx];
   },
-  // Ativa ou desativa um usuário
+  /**
+   * Alterna o status ativo/inativo de um usuário.
+   */
   async toggleActive(id: number): Promise<void> {
     await delay();
     const idx = users.findIndex((u) => u.id === id);

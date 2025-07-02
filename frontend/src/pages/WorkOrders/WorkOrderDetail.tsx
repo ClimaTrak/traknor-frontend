@@ -3,10 +3,17 @@ import { useAuth } from '@/hooks/useAuth';
 import { useWorkOrder } from '@/modules/workorders/application/useWorkOrders';
 import StatusTransitionButtons from './components/StatusTransitionButtons';
 
+/** Exibe os detalhes de uma ordem de serviço selecionada. */
+
+/** Propriedades do componente de detalhes da OS. */
 interface Props {
+  /** Identificador da ordem a ser exibida */
   id: number;
 }
 
+/**
+ * Apresenta informações da OS e botões de transição de status.
+ */
 const WorkOrderDetail = ({ id }: Props) => {
   const { data, isLoading } = useWorkOrder(id);
   const { role } = useAuth();

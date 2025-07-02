@@ -1,4 +1,4 @@
-// Auto-generated Axios client
+// Cliente Axios gerado automaticamente
 import axios from 'axios';
 
 export const client = axios.create({

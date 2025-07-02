@@ -1,4 +1,4 @@
-// Auto-generated via pnpm api:gen
+// Arquivo gerado automaticamente via pnpm api:gen
 export interface ExampleSchema {
   id: number;
 }
