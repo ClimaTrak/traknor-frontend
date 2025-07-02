@@ -1,4 +1,6 @@
 import { useState } from 'react';
+
+// Página de listagem e manutenção de usuários
 import { Button, Group, Modal, Stack, Table, Text, Title } from '@mantine/core';
 import { useUsers } from '../application/useUsers';
 import UsuarioForm from './UsuarioForm';
@@ -11,6 +13,7 @@ const UsuariosPage = () => {
 
   const editingItem = data?.find((u) => u.id === editingId);
 
+  // Decide se cria ou atualiza um usuário ao enviar o formulário
   const handleSubmit = (form: UserFormData) => {
     if (editingId) {
       update.mutate(
@@ -48,6 +51,7 @@ const UsuariosPage = () => {
             </Table.Tr>
           </Table.Thead>
           <Table.Tbody>
+            {/* Lista de usuários */}
             {data.map((u) => (
               <Table.Tr key={u.id}>
                 <Table.Td>{u.name}</Table.Td>
@@ -86,6 +90,7 @@ const UsuariosPage = () => {
           onCancel={() => setOpened(false)}
         />
       </Modal>
+      {/* Fim do modal de usuário */}
     </Stack>
   );
 };

@@ -1,4 +1,6 @@
 import { useState, useMemo, memo, useCallback } from 'react';
+
+// Tabela que lista e permite editar os equipamentos
 import { Button, Group, Loader, Stack, ActionIcon } from '@mantine/core';
 import { IconTrash } from '@tabler/icons-react';
 import { DataTable as MantineDataTable } from 'mantine-datatable';
@@ -24,7 +26,7 @@ const EquipmentTable = () => {
 
   const handleSubmit = useCallback(
     (values: Equipment) => {
-      // placeholder - would call create/update hooks
+      // Aqui chamaríamos a API para criar/atualizar o equipamento
       console.log(values);
       setOpened(false);
       refetch();
@@ -33,6 +35,7 @@ const EquipmentTable = () => {
   );
 
   const columns = useMemo(
+    // Definição das colunas exibidas na tabela
     () => [
       { accessor: 'nome', title: 'Nome' },
       { accessor: 'categoria', title: 'Categoria' },
@@ -67,6 +70,7 @@ const EquipmentTable = () => {
     [deleteMutation],
   );
 
+  // Renderiza a tabela de equipamentos e o modal de edição
   return (
     <Stack>
       <Group justify="flex-end">
