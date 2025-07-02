@@ -1,3 +1,5 @@
+// Este serviço fornece dados simulados para a tela de dashboard.
+// Os métodos abaixo retornam KPIs e outras métricas de forma assíncrona.
 export interface Kpi {
   label: string;
   value: number | string;
@@ -22,7 +24,9 @@ export interface DashboardStats {
 
 const DashboardService = {
   async getStats(): Promise<DashboardStats> {
+    // Pequeno atraso para simular chamada de API
     await new Promise((resolve) => setTimeout(resolve, 300));
+    // Retorna dados estáticos que alimentam os gráficos do dashboard
     return {
       kpis: [
         { label: 'OS Abertas', value: 8, statusColor: 'blue' },

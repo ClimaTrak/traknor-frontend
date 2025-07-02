@@ -1,4 +1,6 @@
 import { useState } from 'react';
+
+// Componente de navegação principal da aplicação
 import { NavLink } from 'react-router-dom';
 import {
   AppShell,
@@ -16,6 +18,7 @@ import {
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import { useAuthStore } from '../../../stores/useAuthStore';
 
+// Links disponíveis no menu conforme o papel do usuário
 const baseLinks = [
   {
     label: 'Visão Geral',
@@ -46,6 +49,7 @@ const TopNav = () => {
   const role = useAuthStore((s) => s.user?.role ?? 'technician');
   const links = baseLinks.filter((l) => l.roles.includes(role));
 
+  // Constrói os botões de navegação a partir dos links autorizados
   const items = links.map((link) => (
     <Button
       key={link.to}
@@ -62,6 +66,7 @@ const TopNav = () => {
     </Button>
   ));
 
+  // Renderiza o cabeçalho com menu e seleção de módulo
   return (
     <AppShell.Header height={64} className="bg-[#002d2b] text-gray-200">
       <Group justify="space-between" h="100%" px="md">

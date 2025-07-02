@@ -3,6 +3,8 @@ import { AppShell } from '@mantine/core';
 import { Outlet } from 'react-router-dom';
 import TopNav from './TopNav';
 
+// Estrutura base da aplicação com cabeçalho
+
 interface Props {
   children?: ReactNode;
 }

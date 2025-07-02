@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+
+// Página principal com indicadores do sistema
 import { SimpleGrid, Skeleton, Stack, Title } from '@mantine/core';
 import StatCard from '../components/StatCard';
 import ChartCard from '../components/ChartCard';
@@ -10,9 +12,11 @@ const DashboardPage = () => {
   const [stats, setStats] = useState<DashboardStats | null>(null);
 
   useEffect(() => {
+    // Busca os dados do dashboard ao montar o componente
     DashboardService.getStats().then(setStats);
   }, []);
 
+  // Enquanto os dados não chegam exibimos um loading
   if (!stats) {
     return (
       <Stack p="lg">
@@ -28,6 +32,7 @@ const DashboardPage = () => {
     );
   }
 
+  // Com os dados prontos exibimos o dashboard
   return (
     <Stack p="lg">
       <Title order={1}>Dashboard</Title>

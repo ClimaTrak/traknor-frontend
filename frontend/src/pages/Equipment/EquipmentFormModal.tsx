@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import { EquipmentInput } from '@/api/generated/schemas';
 import { equipmentFormSchema } from './schema';
 
+// Modal de formulário para criar ou editar equipamentos
+
 interface Props {
   opened: boolean;
   onClose: () => void;
@@ -22,10 +24,12 @@ const EquipmentFormModal = ({
     handleSubmit,
     formState: { errors },
   } = useForm<EquipmentInput>({
+    // Validação com Zod e valores padrões
     resolver: zodResolver(equipmentFormSchema),
     defaultValues: initialValues,
   });
 
+  // Renderiza o modal com o formulário
   return (
     <Modal opened={opened} onClose={onClose} title="Equipamento">
       <form onSubmit={handleSubmit(onSubmit)}>
