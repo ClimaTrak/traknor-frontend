@@ -4,6 +4,11 @@ import { useEquipments } from '../application/useEquipments';
 import EquipamentoForm from './EquipamentoForm';
 import { EquipmentFormData } from '../schemas/equipmentSchema';
 
+/** Tela de listagem e manutenção de equipamentos. */
+
+/**
+ * Página de administração de equipamentos cadastrados.
+ */
 const EquipamentosPage = () => {
   const { data, isLoading, create, update, remove } = useEquipments();
   const [opened, setOpened] = useState(false);
@@ -11,6 +16,9 @@ const EquipamentosPage = () => {
 
   const editingItem = data?.find((e) => e.id === editingId);
 
+  /**
+   * Decide se cria ou atualiza um equipamento no envio do formulário.
+   */
   const handleSubmit = (form: EquipmentFormData) => {
     if (editingId) {
       update.mutate(

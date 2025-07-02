@@ -1,5 +1,13 @@
 import { Equipment, EquipmentInput } from '../domain/equipment';
 
+/**
+ * Serviço de persistência de equipamentos.
+ *
+ * Neste estágio os dados são mantidos apenas em memória para fins de
+ * demonstração, simulando o comportamento de uma API real.
+ */
+
+// Conjunto de equipamentos armazenados em memória
 let equipments: Equipment[] = [
   {
     id: 1,
@@ -19,13 +27,17 @@ let equipments: Equipment[] = [
   },
 ];
 
+// Simula uma pequena latência nas requisições
 const delay = () => new Promise((r) => setTimeout(r, 100));
 
+/** Conjunto de operações relacionadas a equipamentos. */
 const EquipmentService = {
+  /** Obtém a lista de equipamentos cadastrados */
   async list(): Promise<Equipment[]> {
     await delay();
     return equipments;
   },
+  /** Cadastra um novo equipamento */
   async create(data: EquipmentInput): Promise<Equipment> {
     await delay();
     const exists = equipments.some((e) => e.tag === data.tag);
@@ -39,6 +51,7 @@ const EquipmentService = {
     equipments.push(newEquipment);
     return newEquipment;
   },
+  /** Atualiza um equipamento existente */
   async update(id: number, data: EquipmentInput): Promise<Equipment> {
     await delay();
     const idx = equipments.findIndex((e) => e.id === id);
@@ -53,6 +66,7 @@ const EquipmentService = {
     equipments[idx] = { id, ...data };
     return equipments[idx];
   },
+  /** Remove um equipamento pelo id */
   async remove(id: number): Promise<void> {
     await delay();
     equipments = equipments.filter((e) => e.id !== id);

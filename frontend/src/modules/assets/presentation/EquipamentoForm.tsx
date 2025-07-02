@@ -3,12 +3,23 @@ import { Button, Group, NumberInput, TextInput } from '@mantine/core';
 import { useForm } from 'react-hook-form';
 import { EquipmentFormData, equipmentSchema } from '../schemas/equipmentSchema';
 
+/**
+ * Formulário utilizado para inserir ou editar equipamentos.
+ */
+
+/** Propriedades esperadas pelo formulário de equipamento. */
 interface Props {
+  /** Valores iniciais utilizados em modo de edição */
   initialValues?: EquipmentFormData;
+  /** Função executada no envio */
   onSubmit: (data: EquipmentFormData) => void;
+  /** Função chamada ao cancelar/fechar */
   onCancel: () => void;
 }
 
+/**
+ * Componente de formulário para cadastro e edição de equipamentos.
+ */
 const EquipamentoForm = ({ initialValues, onSubmit, onCancel }: Props) => {
   const {
     register,

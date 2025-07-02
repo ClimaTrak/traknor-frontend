@@ -3,12 +3,28 @@ import { Button, Group, PasswordInput, Select, TextInput } from '@mantine/core';
 import { useForm } from 'react-hook-form';
 import { UserFormData, userSchema, roleEnum } from '../schemas/userSchema';
 
+/**
+ * Formulário para criação e edição de usuários.
+ *
+ * Utiliza React Hook Form aliado ao Zod para validação dos campos e exibe os
+ * erros de forma integrada aos componentes do Mantine.
+ */
+
+/**
+ * Propriedades aceitas pelo componente de formulário de usuário.
+ */
 interface Props {
+  /** Valores iniciais utilizados para edição */
   initialValues?: Partial<UserFormData>;
+  /** Callback acionado no envio do formulário */
   onSubmit: (data: UserFormData) => void;
+  /** Callback acionado ao cancelar/fechar */
   onCancel: () => void;
 }
 
+/**
+ * Componente de formulário reutilizável para manutenção de usuários.
+ */
 const UsuarioForm = ({ initialValues, onSubmit, onCancel }: Props) => {
   const {
     register,

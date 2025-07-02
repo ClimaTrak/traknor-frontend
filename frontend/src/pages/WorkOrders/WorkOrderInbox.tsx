@@ -5,6 +5,8 @@ import { useWorkOrders } from '@/modules/workorders/application/useWorkOrders';
 import type { WorkOrder } from '@/modules/workorders/domain/workorder';
 import WorkOrderDetail from './WorkOrderDetail';
 
+/** Lista de ordens de serviço com filtros e painel de detalhes. */
+
 const priorities = [
   { value: 'LOW', label: 'Baixa' },
   { value: 'MEDIUM', label: 'Média' },
@@ -18,6 +20,9 @@ const statuses = [
   { value: 'CANCELLED', label: 'Cancelada' },
 ];
 
+/**
+ * Componente que exibe a caixa de entrada de OS com filtros e seleção.
+ */
 const WorkOrderInbox = () => {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
@@ -46,6 +51,9 @@ const WorkOrderInbox = () => {
     [],
   );
 
+  /**
+   * Seleciona uma OS na tabela para exibir seus detalhes.
+   */
   const handleRowClick = useCallback((record: WorkOrder) => {
     setSelected(record.id);
   }, []);

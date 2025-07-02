@@ -6,6 +6,9 @@ import { useUsers } from '../application/useUsers';
 import UsuarioForm from './UsuarioForm';
 import { UserFormData } from '../schemas/userSchema';
 
+/**
+ * Tela principal de administração de usuários.
+ */
 const UsuariosPage = () => {
   const { data, isLoading, create, update, toggleActive } = useUsers();
   const [opened, setOpened] = useState(false);
@@ -13,7 +16,9 @@ const UsuariosPage = () => {
 
   const editingItem = data?.find((u) => u.id === editingId);
 
-  // Decide se cria ou atualiza um usuário ao enviar o formulário
+  /**
+   * Decide se cria ou atualiza um usuário ao submeter o formulário.
+   */
   const handleSubmit = (form: UserFormData) => {
     if (editingId) {
       update.mutate(
