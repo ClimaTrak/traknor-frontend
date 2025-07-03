@@ -2,6 +2,8 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import AppLayout from '../presentation/components/layout/AppLayout';
 import Overview from '../presentation/pages/Overview';
 import EquipmentList from '../pages/Equipment/EquipmentList';
+import ImportCsvModal from '../pages/Equipment/ImportCsvModal';
+import EquipmentFormModal from '../pages/Equipment/EquipmentFormModal';
 import UsuariosPage from '../modules/users/presentation/UsuariosPage';
 import WorkOrderInbox from '../pages/WorkOrders/WorkOrderInbox';
 import Plans from '../presentation/pages/Plans';
@@ -25,7 +27,11 @@ const Router = () => {
           </AuthGuard>
         }
       >
-        <Route index element={<DashboardPage />} />
+        <Route path="dashboard/*" element={<DashboardPage />}>
+          <Route path="import-csv" element={<ImportCsvModal />} />
+          <Route path="new" element={<EquipmentFormModal />} />
+        </Route>
+        <Route index element={<Navigate to="dashboard" replace />} />
         <Route path="overview" element={<Overview />} />
         <Route path="equipamentos" element={<EquipmentList />} />
         <Route path="usuarios" element={<UsuariosPage />} />
