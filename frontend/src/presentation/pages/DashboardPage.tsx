@@ -1,4 +1,9 @@
 import { useEffect, useState } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
+import { Button } from '@mantine/core';
+import { useGetApiEquipment } from '@/api/generated/hooks/equipment';
+import EmptyState from '../components/EmptyState';
+import strings from '../../i18n';
 
 // Página principal com indicadores do sistema
 import { SimpleGrid, Skeleton, Stack, Title } from '@mantine/core';
@@ -9,12 +14,49 @@ import DashboardService, {
 } from '../../services/DashboardService';
 
 const DashboardPage = () => {
+  const navigate = useNavigate();
+  const { data: equipments, isLoading: eqLoading } = useGetApiEquipment({
+    page: 1,
+    page_size: 1,
+  });
   const [stats, setStats] = useState<DashboardStats | null>(null);
 
   useEffect(() => {
     // Busca os dados do dashboard ao montar o componente
     DashboardService.getStats().then(setStats);
   }, []);
+
+  if (eqLoading || !equipments) {
+    return (
+      <Stack p="lg">
+        <Title order={1}>Dashboard</Title>
+        <Skeleton h={120} />
+      </Stack>
+    );
+  }
+
+  if (equipments.length === 0) {
+    return (
+      <Stack p="lg">
+        <Title order={1}>Dashboard</Title>
+        <EmptyState
+          title={strings.dashboard.empty.title}
+          description={strings.dashboard.empty.description}
+          actions={
+            <>
+              <Button onClick={() => navigate('import-csv')}>
+                {strings.dashboard.empty.importCsv}
+              </Button>
+              <Button variant="outline" onClick={() => navigate('new')}>
+                {strings.dashboard.empty.addEquipment}
+              </Button>
+            </>
+          }
+        />
+        <Outlet />
+      </Stack>
+    );
+  }
 
   // Enquanto os dados não chegam exibimos um loading
   if (!stats) {
@@ -49,6 +91,7 @@ const DashboardPage = () => {
           <div style={{ height: 240 }}>Gráfico Pizza</div>
         </ChartCard>
       </SimpleGrid>
+      <Outlet />
     </Stack>
   );
 };
