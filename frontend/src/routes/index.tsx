@@ -10,7 +10,7 @@ import Plans from '../presentation/pages/Plans';
 import Metrics from '../presentation/pages/Metrics';
 import Reports from '../presentation/pages/Reports';
 import DashboardPage from '../presentation/pages/DashboardPage';
-import LoginPage from '../presentation/pages/LoginPage';
+import LoginPage from '../pages/Login';
 import AuthGuard from '../components/routes/AuthGuard';
 import useIsAuthenticated from '../application/hooks/useIsAuthenticated';
 
