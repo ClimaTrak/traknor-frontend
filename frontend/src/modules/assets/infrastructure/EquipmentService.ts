@@ -1,4 +1,5 @@
 import { Equipment, EquipmentInput } from '../domain/equipment';
+import { HttpError } from '@/infrastructure/errors';
 
 /**
  * Serviço de persistência de equipamentos.
@@ -42,10 +43,7 @@ const EquipmentService = {
     await delay();
     const exists = equipments.some((e) => e.tag === data.tag);
     if (exists) {
-      const err = new Error('TAG duplicada');
-      // @ts-ignore
-      err.status = 422;
-      throw err;
+      throw new HttpError('TAG duplicada', 422);
     }
     const newEquipment: Equipment = { id: Date.now(), ...data };
     equipments.push(newEquipment);
@@ -58,10 +56,7 @@ const EquipmentService = {
     if (idx === -1) throw new Error('Not found');
     const exists = equipments.some((e) => e.tag === data.tag && e.id !== id);
     if (exists) {
-      const err = new Error('TAG duplicada');
-      // @ts-ignore
-      err.status = 422;
-      throw err;
+      throw new HttpError('TAG duplicada', 422);
     }
     equipments[idx] = { id, ...data };
     return equipments[idx];

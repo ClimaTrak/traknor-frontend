@@ -1,4 +1,5 @@
 import { User, UserInput } from '../domain/user';
+import { HttpError } from '@/infrastructure/errors';
 
 /**
  * Serviço responsável por manipular usuários na camada de infraestrutura.
@@ -55,10 +56,7 @@ const UserService = {
     await delay();
     const exists = users.some((u) => u.email === data.email);
     if (exists) {
-      const err = new Error('E-mail já em uso');
-      // @ts-ignore
-      err.status = 422;
-      throw err;
+      throw new HttpError('E-mail já em uso', 422);
     }
     const newUser: User = { id: Date.now(), active: true, ...data };
     users.push(newUser);
@@ -76,10 +74,7 @@ const UserService = {
       data.email &&
       users.some((u) => u.email === data.email && u.id !== id)
     ) {
-      const err = new Error('E-mail já em uso');
-      // @ts-ignore
-      err.status = 422;
-      throw err;
+      throw new HttpError('E-mail já em uso', 422);
     }
     users[idx] = { ...users[idx], ...data } as User;
     return users[idx];
