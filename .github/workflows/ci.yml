@@ -26,7 +26,11 @@ jobs:
         with:
           path: ~/.pnpm-store
           key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+      - name: Install dependencies
+        run: pnpm install
+      - name: Lint
+        run: pnpm lint
+      - name: Run tests
+        run: pnpm test
       - name: Build frontend
-        run: |
-          pnpm install
-          pnpm build
+        run: pnpm build
