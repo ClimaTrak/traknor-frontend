@@ -40,8 +40,6 @@ module.exports = [
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        project: './tsconfig.eslint.json',
-        tsconfigRootDir: __dirname,
         sourceType: 'module',
         ecmaVersion: 2020,
         ecmaFeatures: { jsx: true },
@@ -116,6 +114,15 @@ module.exports = [
       '*.config.ts',
       'vite.config.ts',
     ],
+    languageOptions: {
+      globals: {
+        window: 'readonly',
+        document: 'readonly',
+        localStorage: 'readonly',
+        module: 'readonly',
+        setTimeout: 'readonly',
+      },
+    },
     files: ['**/*.{js,jsx,ts,tsx,mjs,cjs}'],
   },
 ];

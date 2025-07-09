@@ -17,6 +17,7 @@
       "@/*": ["src/*"]
     },
     "isolatedModules": true,
+    "noEmitOnError": false,
     "noEmit": true,
     "jsx": "react-jsx"
   },

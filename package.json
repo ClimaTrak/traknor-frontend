@@ -9,6 +9,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "echo 'Skipping lint'",
+    "lint:ci": "eslint . --no-config-lookup --config eslint.config.cjs --max-warnings 0",
     "test": "vitest run",
     "storybook": "storybook dev -p 6006"
   },
