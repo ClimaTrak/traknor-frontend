@@ -11,7 +11,8 @@
     "lint": "echo 'Skipping lint'",
     "lint:ci": "eslint . --no-config-lookup --config eslint.config.cjs --max-warnings 0",
     "test": "vitest run",
-    "storybook": "storybook dev -p 6006"
+    "storybook": "storybook dev -p 6006",
+    "health-check": "vitest run --reporter dot"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
@@ -69,5 +70,4 @@
     "workerDirectory": [
       "public"
     ]
-  }
-}
+  }}

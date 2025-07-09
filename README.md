@@ -11,6 +11,7 @@ This repository contains the Traknor front‑end (React + Vite) and an optional 
 cp .env.example .env   # configure API URL if needed
 pnpm install
 pnpm dev
+pnpm health-check
 ```
 The app will be available at http://localhost:5173.
 
