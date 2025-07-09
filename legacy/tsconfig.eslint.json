@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["frontend/src", "frontend/tests", "frontend/setupTests.ts"],
+  "exclude": ["node_modules", "dist", ".vite", ".storybook"]
+}
