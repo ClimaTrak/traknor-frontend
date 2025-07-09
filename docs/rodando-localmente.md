@@ -27,8 +27,6 @@ pnpm update
 
 ```bash
 pnpm dev
-# Se optar por manter `vite.config.ts` dentro de `frontend`, utilize:
-# vite --config frontend/vite.config.ts
 ```
 
 A aplicação ficará disponível em `http://localhost:5173`.

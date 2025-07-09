@@ -29,4 +29,4 @@ jobs:
       - name: Build frontend
         run: |
           pnpm install
-          pnpm --filter frontend build
+          pnpm build

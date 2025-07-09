@@ -1,15 +1,13 @@
-// /frontend/vite.config.ts
+// vite.config.ts
 
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
-// Este arquivo agora vive dentro da pasta /frontend.
-// As configurações são mais simples porque os caminhos são relativos a este local.
+// Configuracao principal do Vite para o projeto React.
 
 export default defineConfig({
-  // A propriedade 'root' foi REMOVIDA. 
-  // O Vite assume, por padrão, a raiz como o diretório atual ('/frontend'), que agora é o correto.
+  // A propriedade 'root' não é definida pois usamos a raiz do projeto.
 
   
   plugins: [react()],
@@ -26,10 +24,9 @@ export default defineConfig({
     },
   },
 
-  // A configuração do alias de caminho agora é muito mais simples.
+  // Resolve path aliases para importações
   resolve: {
     alias: {
-      // Como __dirname agora aponta para /frontend, o caminho para a pasta 'src' está correto e mais limpo.
       '@': path.resolve(__dirname, 'src'),
     },
   },
