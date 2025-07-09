@@ -1,6 +1,6 @@
 import React from 'react';
 import { MantineProvider } from '@mantine/core';
-import '../frontend/src/index.css';
+import '../src/index.css';
 
 export const decorators = [
   (Story: any) => (

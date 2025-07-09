@@ -3,7 +3,7 @@ name: smoke-front
 on:
   pull_request:
     paths:
-      - 'frontend/**'
+      - '**'
   workflow_dispatch:
 
 jobs:
@@ -18,4 +18,4 @@ jobs:
       - name: Install dependencies
         run: pnpm install --registry ${NPM_REGISTRY:-https://registry.npmmirror.com}
       - name: Build frontend
-        run: pnpm --filter frontend build
+        run: pnpm build
