@@ -1,4 +1,4 @@
-import { Role } from '../domain/auth';
+import { Role } from '@/domain/auth';
 
 /**
  * Retorna a rota inicial apropriada para o papel informado.

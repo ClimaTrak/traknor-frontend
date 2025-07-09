@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import UserService from '../infrastructure/UserService';
-import { UserInput } from '../domain/user';
+import UserService from '@/modules/users/infrastructure/UserService';
+import { UserInput } from '@/modules/users/domain/user';
 
 /**
  * Hook que centraliza as operações de consulta e mutação de usuários.

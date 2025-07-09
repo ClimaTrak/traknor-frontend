@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 // Página de listagem e manutenção de usuários
 import { Button, Group, Modal, Stack, Table, Text, Title } from '@mantine/core';
-import { useUsers } from '../application/useUsers';
+import { useUsers } from '@/modules/users/application/useUsers';
 import UsuarioForm from './UsuarioForm';
-import { UserFormData } from '../schemas/userSchema';
+import { UserFormData } from '@/modules/users/schemas/userSchema';
 
 /**
  * Tela principal de administração de usuários.

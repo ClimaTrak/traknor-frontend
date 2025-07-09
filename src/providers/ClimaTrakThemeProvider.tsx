@@ -4,7 +4,7 @@ import {
   ColorScheme,
   createTheme,
 } from '@mantine/core';
-import { colors } from '../styles/tokens';
+import { colors } from '@/styles/tokens';
 
 interface Props {
   children: ReactNode;

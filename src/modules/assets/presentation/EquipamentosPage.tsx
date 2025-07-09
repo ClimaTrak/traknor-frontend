@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Button, Group, Modal, Stack, Table, Text, Title } from '@mantine/core';
-import { useEquipments } from '../application/useEquipments';
+import { useEquipments } from '@/modules/assets/application/useEquipments';
 import EquipamentoForm from './EquipamentoForm';
-import { EquipmentFormData } from '../schemas/equipmentSchema';
+import { EquipmentFormData } from '@/modules/assets/schemas/equipmentSchema';
 
 /** Tela de listagem e manutenção de equipamentos. */
 

@@ -1,4 +1,4 @@
-import { Role } from '../domain/auth';
+import { Role } from '@/domain/auth';
 
 /** Armazena o papel do usuário selecionado no localStorage. */
 

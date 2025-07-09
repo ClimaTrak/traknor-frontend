@@ -1,4 +1,4 @@
-import { User, UserInput } from '../domain/user';
+import { User, UserInput } from '@/modules/users/domain/user';
 import { HttpError } from '@/infrastructure/errors';
 
 /**

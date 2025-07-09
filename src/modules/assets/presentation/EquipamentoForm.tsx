@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Group, NumberInput, TextInput } from '@mantine/core';
 import { useForm } from 'react-hook-form';
-import { EquipmentFormData, equipmentSchema } from '../schemas/equipmentSchema';
+import { EquipmentFormData, equipmentSchema } from '@/modules/assets/schemas/equipmentSchema';
 
 /**
  * Formulário utilizado para inserir ou editar equipamentos.
