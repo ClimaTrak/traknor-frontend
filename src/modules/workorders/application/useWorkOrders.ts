@@ -1,4 +1,4 @@
-import type { WorkOrderStatus } from '../domain/workorder';
+import type { WorkOrderStatus } from '@/modules/workorders/domain/workorder';
 import {
   useGetApiWorkOrders,
   useGetApiWorkOrdersById,

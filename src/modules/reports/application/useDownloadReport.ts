@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { api } from '@/infrastructure/api/axios';
 import { showNotification } from '@mantine/notifications';
 import { saveAs } from 'file-saver';
-import type { ReportType, ReportFormat } from '../domain/report';
+import type { ReportType, ReportFormat } from '@/modules/reports/domain/report';
 
 /**
  * Hook responsável por requisitar a geração e download de relatórios.

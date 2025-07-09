@@ -1,4 +1,4 @@
-import { Equipment, EquipmentInput } from '../domain/equipment';
+import { Equipment, EquipmentInput } from '@/modules/assets/domain/equipment';
 import { HttpError } from '@/infrastructure/errors';
 
 /**

@@ -16,7 +16,7 @@ import {
   useMantineTheme,
 } from '@mantine/core';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
-import { useAuthStore } from '../../../stores/useAuthStore';
+import { useAuthStore } from '@/stores/useAuthStore';
 
 // Links disponíveis no menu conforme o papel do usuário
 const baseLinks = [

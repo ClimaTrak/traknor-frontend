@@ -1,6 +1,6 @@
 import { Card, Group, Stack, Text } from '@mantine/core';
 import { ReactNode } from 'react';
-import useTokens from '../../hooks/useTokens';
+import useTokens from '@/hooks/useTokens';
 
 interface Props {
   icon?: ReactNode;

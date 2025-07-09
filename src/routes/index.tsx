@@ -1,18 +1,18 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import AppLayout from '../presentation/components/layout/AppLayout';
-import Overview from '../presentation/pages/Overview';
-import EquipmentList from '../pages/Equipment/EquipmentList';
-import ImportCsvModal from '../pages/Equipment/ImportCsvModal';
-import EquipmentFormModal from '../pages/Equipment/EquipmentFormModal';
-import UsuariosPage from '../modules/users/presentation/UsuariosPage';
-import WorkOrderInbox from '../pages/WorkOrders/WorkOrderInbox';
-import Plans from '../presentation/pages/Plans';
-import Metrics from '../presentation/pages/Metrics';
-import Reports from '../presentation/pages/Reports';
-import DashboardPage from '../presentation/pages/DashboardPage';
-import LoginPage from '../pages/Login';
-import AuthGuard from '../components/routes/AuthGuard';
-import useIsAuthenticated from '../application/hooks/useIsAuthenticated';
+import AppLayout from '@/presentation/components/layout/AppLayout';
+import Overview from '@/presentation/pages/Overview';
+import EquipmentList from '@/pages/Equipment/EquipmentList';
+import ImportCsvModal from '@/pages/Equipment/ImportCsvModal';
+import EquipmentFormModal from '@/pages/Equipment/EquipmentFormModal';
+import UsuariosPage from '@/modules/users/presentation/UsuariosPage';
+import WorkOrderInbox from '@/pages/WorkOrders/WorkOrderInbox';
+import Plans from '@/presentation/pages/Plans';
+import Metrics from '@/presentation/pages/Metrics';
+import Reports from '@/presentation/pages/Reports';
+import DashboardPage from '@/presentation/pages/DashboardPage';
+import LoginPage from '@/pages/Login';
+import AuthGuard from '@/components/routes/AuthGuard';
+import useIsAuthenticated from '@/application/hooks/useIsAuthenticated';
 
 const Router = () => {
   const isAuthenticated = useIsAuthenticated();

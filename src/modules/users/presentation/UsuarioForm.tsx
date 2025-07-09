@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Group, PasswordInput, Select, TextInput } from '@mantine/core';
 import { useForm } from 'react-hook-form';
-import { UserFormData, userSchema, roleEnum } from '../schemas/userSchema';
+import { UserFormData, userSchema, roleEnum } from '@/modules/users/schemas/userSchema';
 
 /**
  * Formulário para criação e edição de usuários.

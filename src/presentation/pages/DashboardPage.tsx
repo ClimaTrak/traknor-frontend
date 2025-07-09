@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Button } from '@mantine/core';
 import { useGetApiEquipment } from '@/api/generated/hooks/equipment';
-import EmptyState from '../components/EmptyState';
-import strings from '../../i18n';
+import EmptyState from '@/presentation/components/EmptyState';
+import strings from '@/i18n';
 
 // Página principal com indicadores do sistema
 import { SimpleGrid, Skeleton, Stack, Title } from '@mantine/core';
-import StatCard from '../components/StatCard';
-import ChartCard from '../components/ChartCard';
+import StatCard from '@/presentation/components/StatCard';
+import ChartCard from '@/presentation/components/ChartCard';
 import DashboardService, {
   DashboardStats,
-} from '../../services/DashboardService';
+} from '@/services/DashboardService';
 
 const DashboardPage = () => {
   const navigate = useNavigate();

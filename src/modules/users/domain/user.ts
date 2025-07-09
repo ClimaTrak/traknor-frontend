@@ -1,4 +1,4 @@
-import { UserRole } from '../schemas/userSchema';
+import { UserRole } from '@/modules/users/schemas/userSchema';
 
 /**
  * Representa um usuário do sistema.

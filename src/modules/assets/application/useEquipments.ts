@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import EquipmentService from '../infrastructure/EquipmentService';
-import { EquipmentInput } from '../domain/equipment';
+import EquipmentService from '@/modules/assets/infrastructure/EquipmentService';
+import { EquipmentInput } from '@/modules/assets/domain/equipment';
 
 /**
  * Hook que centraliza as operações de consulta e mutação de equipamentos.

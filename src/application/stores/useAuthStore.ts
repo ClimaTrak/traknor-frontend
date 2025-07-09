@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { AuthState, User } from '../../domain/auth';
+import { AuthState, User } from '@/domain/auth';
 
 // Armazena informações de autenticação utilizando Zustand
 
