@@ -14,13 +14,8 @@ fi
 echo "⚙️  Fazendo prune no Docker para liberar cache..."
 docker system prune -f || true
 
-echo "🔧  Instalando dependências e configurando (via setup.sh)..."
-chmod +x setup.sh
-# converte CRLF→LF caso necessário
-if command -v dos2unix &> /dev/null; then
-  dos2unix setup.sh
-fi
-./setup.sh
+echo "🔧  Instalando dependências..."
+pnpm install
 
 echo "🚀  Subindo o frontend em Docker..."
 if ! docker compose up --build -d frontend; then

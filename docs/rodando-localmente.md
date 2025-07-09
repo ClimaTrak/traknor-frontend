@@ -4,7 +4,7 @@ Este documento descreve passo a passo como executar a aplicação front-end do C
 
 ## 1. Requisitos
 
- - **Node.js** 20 (via nvm no Linux/Mac ou `pnpm env` no Windows)
+ - **Node.js** 20 LTS
 - **pnpm** como gerenciador de pacotes
 - **Git** para clonar o repositório
 
@@ -14,7 +14,7 @@ Este documento descreve passo a passo como executar a aplicação front-end do C
 git clone <url-do-repositorio>
 cd traknor-frontend
 cp .env.example .env
-./setup.sh   # use --mirror se necessário
+pnpm install
 ```
 
 Se já possui o projeto clonado, atualize as dependências com:
