@@ -7,6 +7,13 @@ import { AuthProvider as RealAuthProvider } from './hooks/useAuth';
 import { AuthProvider as MockAuthProvider } from './contexts/AuthContext.mock';
 import './index.css';
 
+if (import.meta.env.DEV) {
+  const { worker } = await import('./mocks/browser');
+  await worker.start();
+  // eslint-disable-next-line no-console
+  console.log('MSW running');
+}
+
 const AuthProvider = import.meta.env.DEV ? MockAuthProvider : RealAuthProvider;
 
 const queryClient = new QueryClient();
