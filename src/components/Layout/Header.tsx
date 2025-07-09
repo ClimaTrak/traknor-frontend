@@ -4,6 +4,7 @@ import {
   Group,
   AppShell,
   Title,
+  type MantineColorScheme,
 } from '@mantine/core';
 import {
   IconBell,
@@ -15,12 +16,12 @@ import {
 interface Props {
   opened: boolean;
   toggle: () => void;
-  colorScheme: 'light' | 'dark';
+  colorScheme: MantineColorScheme;
   toggleColorScheme: () => void;
 }
 
 const Header = ({ opened, toggle, colorScheme, toggleColorScheme }: Props) => (
-  <AppShell.Header height={64} px="md">
+  <AppShell.Header h={64} px="md">
     <Group h="100%" justify="space-between">
       <Group>
         <Burger

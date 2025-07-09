@@ -23,7 +23,7 @@ const menu = [
 ];
 
 export const Navbar = () => (
-  <AppShell.Navbar width={{ base: 200 }} p="md">
+  <AppShell.Navbar w={{ base: 200 }} p="md">
     <AppShell.Section grow component={Stack} gap="xs">
       {menu.map((item) => (
         <NavLink
