@@ -12,17 +12,7 @@ export default defineConfig({
   
   plugins: [react()],
 
-  // A configuração do 'server' continua a mesma para o ambiente de desenvolvimento.
-  server: {
-    proxy: {
-      '/api': {
-        // O alvo do proxy para o backend.
-        target: 'http://localhost:8000',
-        changeOrigin: true,
-        secure: false, // Útil para ambientes de dev com certificados auto-assinados.
-      },
-    },
-  },
+  // O servidor de desenvolvimento não precisa de proxy.
 
   // Resolve path aliases para importações
   resolve: {
