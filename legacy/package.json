@@ -6,8 +6,6 @@
     "dev": "pnpm -C .. run dev",
     "build": "pnpm -C .. run build",
     "test": "pnpm -C .. run test",
-    "api:gen": "openapi-typescript $VITE_API_URL/schema/ -o ../src/api/generated/schemas.ts && openapi-typescript-codegen --client axios -o ../src/api/generated --useOptions --useUnionTypes $VITE_API_URL/schema/",
-    "api:check": "pnpm -C .. run api:gen && git diff --exit-code",
     "ci:install": "pnpm install --registry=${NPM_REGISTRY:-https://registry.npmmirror.com}"
   },
   "devDependencies": {
